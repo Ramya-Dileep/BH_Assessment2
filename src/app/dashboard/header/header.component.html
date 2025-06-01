@@ -1,0 +1,24 @@
+ <div class="header">
+    <div class="title">
+     <span class="material-icons menu-icon" (click)="onMenuClick()">menu</span>
+     <img src="assets/Logos/Logo-Dashboard.png" alt="App Logo" class="logo" />
+     <span class="divider">|</span>
+     <span class="tool-name">{{toolName}}</span>
+  </div>
+
+  <div class="nav-actions">
+    <button class="nav-btn">My Request</button>
+    <button class="nav-btn">Support Ticket</button>
+
+    <span class="icon material-icons">chat</span>
+    <span class="icon material-icons">help_outline</span>
+    <span class="icon material-icons">notifications</span>
+  </div>
+
+
+ <div class="profile">
+    <img src="assets/Logos/Avatar-user.jpg" class="avatar" alt="User Avatar" (click)="onlogout()" tabindex="0" (blur)="DropdownClose()" />
+  </div>
+
+</div>
+

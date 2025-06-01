@@ -1,0 +1,20 @@
+<div class="sidebar" [class.collapsed]="isCollapsed">
+  <div class="header">
+    <h6>Filter Contracts</h6>
+    <button class="menu-btn"> ...
+    </button>
+    <button class="toggle-btn" (click)="toggleSidebar()">
+      <mat-icon>{{ isCollapsed ? 'arrow_forward' : 'arrow_back' }}</mat-icon>
+    </button>
+  </div>
+  <div class="nav-items">
+    <a *ngFor="let item of navItems" [routerLink]="item.routerLink">
+      <mat-icon>{{ item.icon }}</mat-icon>
+      <span>{{ item.label }}</span>
+    </a>
+  </div>
+</div>
+
+
+
+

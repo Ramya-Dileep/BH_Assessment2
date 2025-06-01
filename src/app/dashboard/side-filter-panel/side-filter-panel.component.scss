@@ -1,0 +1,76 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  background-color: white;
+  padding: 10px;
+  transition: width 0.3s ease;
+
+  &.collapsed {
+    width: 50px;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    h6 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: bold;
+      color: black;
+    }
+
+    .menu-btn{
+        font-size: 24;
+        font-weight: bolder;
+        color: black;
+        border: none;
+        background-color: white;
+        margin-bottom: 12px;
+        width: 25px;
+    }
+
+    .toggle-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 24px;
+    }
+  }
+
+  .nav-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: black;
+      padding: 8px;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #f0f0f0;
+      }
+
+      mat-icon {
+        margin-right: 10px;
+      }
+
+      span {
+        display: inline-block;
+        transition: opacity 0.3s;
+      }
+    }
+  }
+
+  &.collapsed .nav-items a span {
+    opacity: 0;
+  }
+}

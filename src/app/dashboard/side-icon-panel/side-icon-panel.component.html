@@ -1,0 +1,10 @@
+<div class="sidebar">
+  
+  <div class="sidebar-item">
+      @for (item of navItems; track item.id) {
+    <a [routerLink]="item.routerLink">
+      <mat-icon>{{ item.icon }}</mat-icon>
+    </a>
+  }
+  </div>
+</div>

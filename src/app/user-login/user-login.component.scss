@@ -1,0 +1,128 @@
+.loginBackground {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+}
+
+.UserLabel{
+    font-size: 0.85rem; 
+    padding-left: 0.2cm;
+    font-weight: bold; 
+    align-items: center;
+    font-family: 'Calibri';
+}
+
+.loginContent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.required-asterisk {
+  color: red;
+  margin-left: 2px;
+}
+
+h5 {
+    text-align: center;
+    color: black;
+    font-family: 'Calibri';
+}
+
+form {
+    width: 350px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.UserInput::placeholder{
+    font-size: 0.85rem; 
+    padding-left: 0.2cm;
+    font-family: 'Calibri';
+
+}
+
+.UserInput {
+  background-color: white;
+  color: black;
+  border: 1px solid grey;
+  width: 300px;
+  height: 35px;
+  font-family: 'Calibri';
+  margin: 0 auto;           
+  padding-left: 8px;        
+  box-sizing: border-box;   
+  display: block;           
+}
+
+
+.login {
+    width: 300px;
+    height: 35px;
+    border: 1px solid #147D64;
+    background-color: #147D64;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    font-family: 'Calibri';
+    text-align: center;
+    line-height: 35px; 
+    border-radius: 4px; 
+}
+
+
+.material-icons {
+    position: absolute;
+    top: 48%;
+    left: 42%;
+    font-size: 20px;
+    color: #999;
+    padding-right: 5%;
+}
+
+
+.errormsg{
+    color: red;
+}
+  
+  input.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+
+  input:focus {
+    outline: none;
+    box-shadow: none;
+  }  
+
+  .checkboxContainer {
+  display: flex;
+  align-items: center;
+  width: 300px;        
+  margin: 0 auto;      
+  font-family: 'Calibri';
+  font-size: 0.85rem;
+}
+
+.checkboxContainer input[type="checkbox"] {
+  margin-right: 8px;   
+}
+
+.login-logo {
+  display: block;
+  margin: 0 auto 10px auto;  
+  max-width: 150px;          
+  height: auto;
+  margin-bottom: 20px;
+}
+

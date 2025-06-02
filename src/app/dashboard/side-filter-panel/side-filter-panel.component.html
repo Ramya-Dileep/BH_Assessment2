@@ -1,20 +1,114 @@
 <div class="sidebar" [class.collapsed]="isCollapsed">
   <div class="header">
-    <h6>Filter Contracts</h6>
-    <button class="menu-btn"> ...
-    </button>
+    @if (!isCollapsed) {
+      <h6>Filter Contracts</h6>
+      <button class="menu-btn">...</button>
+    }
     <button class="toggle-btn" (click)="toggleSidebar()">
       <mat-icon>{{ isCollapsed ? 'arrow_forward' : 'arrow_back' }}</mat-icon>
     </button>
   </div>
-  <div class="nav-items">
-    <a *ngFor="let item of navItems" [routerLink]="item.routerLink">
-      <mat-icon>{{ item.icon }}</mat-icon>
-      <span>{{ item.label }}</span>
-    </a>
-  </div>
+
+  @if (!isCollapsed) {
+    <div class="contract-buttons">
+      <button
+        class="contract-tab"
+        [class.active]="selectedTab === 'my'"
+        (click)="setTab('my')"
+      >
+        My Contracts
+      </button>
+      <button
+        class="contract-tab"
+        [class.active]="selectedTab === 'all'"
+        (click)="setTab('all')"
+      >
+        All Contracts
+      </button>
+      <button
+        class="contract-tab"
+        [class.active]="selectedTab === 'fav'"
+        (click)="setTab('fav')"
+      >
+        Favourites
+      </button>
+    </div>
+
+    <div class="searchjob">
+      <input
+        type="text"
+        [formControl]="searchControl"
+        placeholder="Search project or job number"
+        class="search-input"
+      />
+    </div>
+
+    <div>
+      <button class="advanceSearch">&gt; Advanced Search</button>
+    </div>
+
+    <div class="nav-items">
+      <div class="results-summary">
+        Results: {{ filteredProjects.length }} contract{{ filteredProjects.length !== 1 ? 's' : '' }}
+      </div>
+
+      @for (project of filteredProjects; track project.projectName) {
+        <div class="project-node">
+          <div class="project-header">
+            <button class="expand-btn" (click)="toggleProject(project.projectName)">
+              {{ isProjectExpanded(project.projectName) ? '▼' : '▶' }}
+            </button>
+
+            <label>
+              <input
+                type="checkbox"
+                [checked]="isProjectSelected(project)"
+                (change)="toggleProjectSelection(project)"
+              />
+              {{ project.projectName }}
+            </label>
+          </div>
+
+          @if (isProjectExpanded(project.projectName)) {
+            <div class="train-list">
+              @for (train of project.trains; track train.trainName) {
+                <div class="train-node">
+                  <div class="train-header">
+                    <button class="expand-btn" (click)="toggleTrainExpand(train.trainName)">
+                      {{ isTrainExpanded(train.trainName) ? '▼' : '▶' }}
+                    </button>
+                    <label>
+                      <input
+                        type="checkbox"
+                        [checked]="isTrainSelected(train.jobNumbers)"
+                        (change)="toggleTrainSelection(train.trainName, train.jobNumbers)"
+                      />
+                      {{ train.trainName }}
+                    </label>
+                  </div>
+
+                  @if (isTrainExpanded(train.trainName)) {
+                    <ul class="job-list">
+                      @for (job of train.jobNumbers; track job) {
+                        <li class="job-node">
+                          <label>
+                            <input
+                              type="checkbox"
+                              [checked]="selectedJobs.has(job)"
+                              (change)="toggleJob(job)"
+                            />
+                            {{ job }}
+                          </label>
+                        </li>
+                      }
+                    </ul>
+                  }
+                </div>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+  }
 </div>
-
-
-
-

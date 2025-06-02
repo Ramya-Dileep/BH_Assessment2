@@ -9,7 +9,7 @@ export class SidebarService {
   isCollapsed$ = this.isCollapsedSubject.asObservable();
 
   toggleSidebar() {
-    this.isCollapsedSubject.next(!this.isCollapsedSubject.value);
+    this.isCollapsedSubject.next(!this.isCollapsedSubject.getValue());
   }
 
   setSidebarState(state: boolean) {

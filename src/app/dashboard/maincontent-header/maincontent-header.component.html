@@ -1,0 +1,24 @@
+
+<div class="maincontentheader">
+    <div class="header">
+        <div class="module">
+         <span class="module-name">{{moduleName}}</span>
+      </div>
+    
+       <div class="nav-actions">
+        <span class="datedisplay">
+            <span class="label">Last Uploaded :</span>
+            <span class="date">{{ today | date:'dd/MMM/yyyy' }}</span>
+          </span>
+        <span class="divider">|</span>
+        <span class="label">YTD</span>
+        <div class="percentage-circle">
+            <div class="circle" [style.--percentage]="percentage">
+              <span class="value">{{ percentage }}%</span>
+            </div>
+          </div>
+        <button class = "nav-btn">Do vs Buy</button>
+      </div> 
+</div>
+
+

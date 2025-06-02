@@ -22,7 +22,6 @@
 .left-sidebars {
   display: flex;
   flex-direction:row;
-  width: 400px;
   margin-left: 0;
 }
 
@@ -35,11 +34,6 @@
   border-right: 1px solid grey;
 }
 
-.filtersidebar {
-  background-color: #05322b;
-  color: white;
-  width: 400px;
-}
 
 .content-area {
   flex-grow: 1;
@@ -54,4 +48,15 @@
   flex-grow: 1;
   padding: 20px;
   background-color: #ecf0f1;
+}
+
+.filtersidebar {
+  background-color: white;
+  color: white;
+  width: 400px;
+  transition: width 0.3s ease;
+
+  &.collapsed {
+    width: 50px;
+  }
 }

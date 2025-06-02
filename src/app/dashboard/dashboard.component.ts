@@ -5,11 +5,12 @@ import { SideIconPanelComponent } from "./side-icon-panel/side-icon-panel.compon
 import { SideFilterPanelComponent } from "./side-filter-panel/side-filter-panel.component";
 import {SidebarService} from '../service/sidebar.service'
 import { Subscription } from 'rxjs';
+import { MaincontentHeaderComponent } from './maincontent-header/maincontent-header.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, SideIconPanelComponent, SideFilterPanelComponent],
+  imports: [CommonModule, HeaderComponent, SideIconPanelComponent, SideFilterPanelComponent, MaincontentHeaderComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

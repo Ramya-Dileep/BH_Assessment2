@@ -1,24 +1,105 @@
 
 <div class="maincontentheader">
     <div class="header">
-        <div class="module">
-         <span class="module-name">{{moduleName}}</span>
+      <div class="module">
+        <span class="module-name">{{ moduleName }}</span>
       </div>
-    
-       <div class="nav-actions">
-        <span class="datedisplay">
+  
+      <div class="nav-actions">
+        <div class="datedisplay k-text k-font-medium">
             <span class="label">Last Uploaded :</span>
-            <span class="date">{{ today | date:'dd/MMM/yyyy' }}</span>
-          </span>
+            <span class="date">{{ today | date: 'dd/MMM/yyyy' }}</span>
+          </div>
         <span class="divider">|</span>
         <span class="label">YTD</span>
         <div class="percentage-circle">
-            <div class="circle" [style.--percentage]="percentage">
-              <span class="value">{{ percentage }}%</span>
+          <div class="circle" [style.--percentage]="percentage">
+            <span class="value">{{ percentage }}%</span>
+          </div>
+        </div>
+        <button kendoButton class="nav-btn">Do vs Buy</button>
+      </div>
+    </div>
+
+    <div class="kendo-tab-buttons">
+        @for (tab of tabButtons; track $index) {
+          <button
+            kendoButton
+            [ngClass]="{ 'active-tab': activeTab === tab.value }"
+            (click)="setActiveTab(tab.value)">
+            {{ tab.label }}
+          </button>
+        }
+      </div>      
+      
+    <div class="projectName">
+        {{ProjectName}}
+    </div>
+
+    <!-- <form [formGroup]="form">
+        <div class="grid-container">
+          <div class="grid-header">
+            <button kendoButton (click)="toggleExpandCollapse()">
+              {{ isExpanded ? 'Collapse All' : 'Expand All' }}
+            </button>
+            <button kendoButton (click)="clearFilters()">Clear Filters</button>
+          </div>
+      
+          <div class="dropdown-filters">
+            <div *ngFor="let filter of filters">
+              <label>{{ filter.label }}</label>
+              <kendo-dropdownlist
+                [data]="filter.data"
+                [formControlName]="filter.key"
+                [textField]="'text'"
+                [valueField]="'value'"
+              >
+              </kendo-dropdownlist>
             </div>
           </div>
-        <button class = "nav-btn">Do vs Buy</button>
-      </div> 
-</div>
+      
+           <kendo-grid
+            [data]="gridData"
+            [expandField]="'expanded'"
+            (expandChange)="onExpandChange($event)"
+          >
+            <kendo-grid-column field="ProductName" title="Product Name"></kendo-grid-column>
+            <kendo-grid-column field="Category" title="Category"></kendo-grid-column>
+            <kendo-grid-column field="Price" title="Price"></kendo-grid-column>
+      
+            <ng-template kendoGridDetailTemplate let-dataItem>
+              <div class="detail-content">
+                <p><strong>Product Details:</strong></p>
+                <p>{{ dataItem.details }}</p>
+              </div>
+            </ng-template>
+          </kendo-grid> -->
+          <!-- <kendo-grid
+          [data]="gridData"
+          [expandField]="'expanded'"
+          (expandChange)="onExpandChange($event)"
+        >
+          <kendo-grid-column field="ProductName" title="Product Name"></kendo-grid-column>
+          <kendo-grid-column field="Category" title="Category"></kendo-grid-column>
+          <kendo-grid-column field="Price" title="Price"></kendo-grid-column>
+        
+          <ng-template kendoGridDetailTemplate let-dataItem>
+            <div class="detail-content">
+              <p><strong>Product Details:</strong> {{ dataItem.details }}</p>
+            </div>
+          </ng-template>
+        </kendo-grid> -->
+        
+        <!-- </div>
+      </form> -->
+      <div>
+        <app-filter-activities title="Filter Activities"></app-filter-activities>
+      </div>
 
+      <div>
+        <app-activities-tabulardata></app-activities-tabulardata>
+      </div>
+      
+  </div>
+  
 

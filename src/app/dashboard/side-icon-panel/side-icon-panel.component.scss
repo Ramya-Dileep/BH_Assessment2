@@ -28,8 +28,17 @@ mat-icon {
   font-size: 24px;
   background-color: transparent;
   color: grey;
-  outline: black;
-  
-  
+  outline: black; 
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 16;
+  color: grey;
+  margin-bottom: 25px;
+  font-size: 20px;
 }
 

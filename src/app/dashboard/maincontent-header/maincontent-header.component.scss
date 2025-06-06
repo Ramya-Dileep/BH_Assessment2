@@ -1,8 +1,10 @@
+
 .maincontentheader {
     .header {
       display: flex;
-      justify-content: space-between; // key to push nav-actions to the right
+      justify-content: space-between;
       align-items: center;
+      margin-bottom: 2px;
   
       .module {
         .module-name {
@@ -16,70 +18,56 @@
         display: flex;
         align-items: center;
         gap: 16px;
-
-        .label{
-            font-size: 12px;
+  
+        .label {
+          font-size: 12px;
         }
-
+  
         .percentage-circle {
-            .circle {
-              --percentage: 75; // default if not bound
-              $size: 35px;        
-              width: $size;
-              height: $size;
+          .circle {
+            --percentage: 75;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: conic-gradient(#02a783 calc(var(--percentage) * 1%), #e0e0e0 0);
+  
+            .value {
+              position: relative;
+              z-index: 2;
+              font-size: 14px;
+              color: #000;
+              background-color: #ecf0f1;
               border-radius: 50%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              background:
-                conic-gradient(
-                    #02A783 calc(var(--percentage) * 1%), 
-                  #e0e0e0 0
-                );
-          
-              .value {
-                position: relative; /* keep above ::before */
-                z-index: 2;
-                font-size: 14px;
-                color: #000;
-                background-color:#ecf0f1;
-                border-radius: 50%;
-              }
             }
           }
-          
-  
+        }
         .datedisplay {
             font-size: 14px;
             display: flex;
             align-items: center;
             gap: 4px;
-          
-            .label {
-              color: #000000; // Black for the label
+                      
+           .label {
+            color: #000000;
             }
-          
+                      
             .date {
               color: #02A783; // Aqua for the date
               font-weight: 500;
+                }
             }
-          }
-          
   
         .divider {
           color: #ccc;
           font-size: 16px;
         }
   
-        .icon {
-          font-family: 'Material Icons';
-          font-size: 20px;
-          color: #666;
-        }
-  
         .nav-btn {
           padding: 6px 12px;
-          background-color: #147D64;
+          background-color: #147d64;
           color: #fff;
           border: none;
           border-radius: 4px;
@@ -93,5 +81,78 @@
         }
       }
     }
+    .projectName{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 60px;  
+        font-weight: bolder;
+        background-color:none;
+        // border-bottom: 1px solid rgba(128, 128, 128, 0.29);
+        // box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        flex-shrink: 0;
+        flex: 1;
+    }
+
+    .kendo-tab-buttons {
+        display: flex;
+        gap: 24px;
+        height: 50;
+        margin-bottom: 0;
+        margin-top: 30px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.29);
+
+      
+        button.k-button {
+          background: none;
+          border: none;
+          border-bottom: 2px solid transparent;
+          border-radius: 0;
+          padding: 8px 0;
+          color: #333;
+          font-weight: 500;
+          box-shadow: none;
+          outline: none;
+                       
+          &.active-tab {
+            border-bottom-color: #02A783; 
+            color: #02A783;
+            box-shadow: none;
+            outline: none;
+          }
+        }
+      }
+      
+      .grid-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      
+      .grid-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+      
+      .dropdown-filters {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+      
+      .dropdown-filters div {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .detail-content {
+        padding: 10px;
+        background-color: #eef;
+        border: 1px solid #ddd;
+      }
+      
   }
+  
   

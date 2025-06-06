@@ -18,10 +18,19 @@ export class DashboardComponent {
 
   toolName : string = "OTR"
 
-   isSidebarCollapsed = false;
+  isSidebarCollapsed = false;
   private collapseSubscription: Subscription = new Subscription;
+  selectedContracts: string[] = [];
+  SelectedContractsForMain : string = ""
 
-  constructor(private sidebarService: SidebarService) {}
+  onContractsChanged(contracts: string[]) {
+    this.selectedContracts = contracts;
+    this.SelectedContractsForMain  = this.selectedContracts.join(', ')
+  }
+
+  constructor(private sidebarService: SidebarService) {
+
+  }
 
   ngOnInit() {
     this.collapseSubscription = this.sidebarService.isCollapsed$.subscribe(
@@ -36,6 +45,12 @@ export class DashboardComponent {
       this.collapseSubscription.unsubscribe();
     }
   }
+
+  isFullscreen = false;
+
+  onFullscreenChanged(fullscreen: boolean) {
+  this.isFullscreen = fullscreen;
+}
 }
 
 

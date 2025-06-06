@@ -54,11 +54,10 @@
 
       @for (project of filteredProjects; track project.projectName) {
         <div class="project-node">
-          <div class="project-header">
-            <button class="expand-btn" (click)="toggleProject(project.projectName)">
-              {{ isProjectExpanded(project.projectName) ? '▼' : '▶' }}
+          <div class="project-header">            
+            <button  class="material-symbols-outlined" (click)="toggleProject(project.projectName)">
+                {{ isProjectExpanded(project.projectName) ? 'arrow_drop_down' : 'arrow_right' }}
             </button>
-
             <label>
               <input
                 type="checkbox"
@@ -74,8 +73,8 @@
               @for (train of project.trains; track train.trainName) {
                 <div class="train-node">
                   <div class="train-header">
-                    <button class="expand-btn" (click)="toggleTrainExpand(train.trainName)">
-                      {{ isTrainExpanded(train.trainName) ? '▼' : '▶' }}
+                      <button class="material-symbols-outlined" (click)="toggleTrainExpand(train.trainName)">
+                        {{ isTrainExpanded(train.trainName) ?  'arrow_drop_down' : 'arrow_right' }}
                     </button>
                     <label>
                       <input

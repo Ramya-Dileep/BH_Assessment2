@@ -3,7 +3,10 @@
   <div class="sidebar-item">
       @for (item of navItems; track item.id) {
     <a [routerLink]="item.routerLink">
-      <mat-icon>{{ item.icon }}</mat-icon>
+      <!-- <mat-icon>{{ item.icon }}</mat-icon> -->
+      <span class="material-symbols-outlined">
+        {{ item.icon }}
+        </span>
     </a>
   }
   </div>

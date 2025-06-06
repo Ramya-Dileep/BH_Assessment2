@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-
+import { Output, EventEmitter } from '@angular/core';
 import { SidebarService } from '../../service/sidebar.service';
 import { ProjectTreeService, Project } from '../../service/project-tree.service';
 import { ProjectTreeNode } from '../../models/projectTree.model';
@@ -19,6 +19,7 @@ import { ProjectTreeNode } from '../../models/projectTree.model';
 export class SideFilterPanelComponent implements OnInit, OnDestroy {
   isCollapsed = false;
   selectedTab: 'all' | 'my' | 'fav' = 'all';
+  @Output() selectedContractsChange = new EventEmitter<string[]>(); 
 
   searchControl = new FormControl('');
   selectedJobs = new Set<string>();
@@ -140,7 +141,8 @@ export class SideFilterPanelComponent implements OnInit, OnDestroy {
         // Select all jobs in all trains
         train.jobNumbers.forEach(job => this.selectedJobs.add(job));
       });
-    }
+
+      setTimeout(() => this.emitSelectedContracts());    }
   }
   
   toggleJob(job: string): void {
@@ -176,6 +178,18 @@ export class SideFilterPanelComponent implements OnInit, OnDestroy {
       : this.expandedProjects.add(projectName);
   }
 
+  emitSelectedContracts(): void {
+    const selectedContracts = this.filteredProjects
+      .filter(project => 
+        project.trains.some(train =>
+          train.jobNumbers.some(job => this.selectedJobs.has(job))
+        )
+      )
+      .map(project => project.projectName);
+
+    this.selectedContractsChange.emit(selectedContracts);
+  }
+
   isProjectExpanded(projectName: string): boolean {
     return this.expandedProjects.has(projectName);
   }
@@ -190,6 +204,7 @@ export class SideFilterPanelComponent implements OnInit, OnDestroy {
   }
 
   isProjectSelected(project: ProjectTreeNode): boolean {
+    setTimeout(() => this.emitSelectedContracts());
     const allJobs = project.trains.flatMap((t) => t.jobNumbers);
     return allJobs.every((job) => this.selectedJobs.has(job));
   }

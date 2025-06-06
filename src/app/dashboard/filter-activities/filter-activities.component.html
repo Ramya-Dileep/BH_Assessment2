@@ -1,0 +1,136 @@
+<!-- <div class="expandable-panel">
+    <div class="panel-header" (click)="togglePanel()">
+      <span class="title">{{ title }}</span>
+      <span class="toggle-icon">
+        {{ isExpanded ? '▲' : '▼' }}
+      </span>
+    </div>
+  
+    @if (isExpanded) {
+      <div class="panel-body">
+        <ng-content></ng-content>
+      </div>
+    }
+  </div> -->
+  
+  <!-- <div class="kendo-expandable-panel">
+
+    <div class="k-panel-header" (click)="togglePanel()">
+        <span class="title">{{ title }}</span>
+      <button 
+        kendoButton 
+        [icon]="isExpanded() ? 'chevron-up' : 'chevron-down'" 
+        iconType="font">
+      </button>
+    </div>
+  
+    @if (isExpanded()) {
+      <div class="k-panel-content">
+        <ng-content></ng-content>
+      </div>
+    }
+  </div> -->
+
+  <div class="kendo-expandable-panel">
+    <div class="k-panel-header">
+      <span class="title">{{ title }}</span>
+
+      <div class="nav-items">
+
+      <span class="clrfilter" (click) = "clearFilters()">
+        Clear Filter
+      </span>
+  
+      <span class="more">
+        ...
+      </span>
+
+      <span class="toggle-icon"  (click)="togglePanel()">
+        {{ isExpanded() ? '▲' : '▼' }}
+      </span>
+    </div>
+    </div>
+  
+    @if (isExpanded()) {
+      <div class="k-panel-content">
+
+        <div class="dropdown-wrapper">
+            @for (filter of filters; track $index) {
+              <div class="dropdown-item">
+                <label class="dropdown-label">{{ filter.label }}</label>
+                <kendo-dropdownlist
+                  [data]="filter.data"
+                  [formControl]="filter.control"
+                  [textField]="'text'"
+                  [valueField]="'value'">
+                </kendo-dropdownlist>
+              </div>
+            }
+          </div>
+
+        <!-- <div class="dropdown-wrapper">
+            @for (filter of filters; track $index) {
+    <div class="dropdown-item">
+      <label class="dropdown-label">{{ filter.label }}</label>
+      <kendo-dropdownlist
+        [data]="filter.data"
+        [formControl]="filter.control"
+        [textField]="'text'"
+        [valueField]="'value'">
+      </kendo-dropdownlist>
+    </div>
+  }
+          </div> -->
+
+          <!-- <div class="dropdown-wrapper">
+            @for (filter of filters; track $index) {
+              <div class="dropdown-item">
+                <label class="dropdown-label">{{ filter.label }}</label>
+                <kendo-multiselect
+                  [data]="filter.data"
+                  [formControl]="filter.control"
+                  [textField]="'text'"
+                  [valueField]="'value'">
+                </kendo-multiselect>
+              </div>
+            }
+          </div> -->
+          
+          <div class="filterbtn">
+            @for (btn of buttons; track $index){
+                <button kendoButton 
+                [ngClass]="{ 'active-tab': activeTab === btn.value }"
+                (click)="setActiveTab(btn.value)"
+                class="btndisplay"> {{ btn.label }} ({{ btn.count }})</button>
+            }
+
+          </div>
+
+
+          <div class="fwbtn">
+            <button 
+                kendoButton 
+                class="two-line-display"
+                class="btndisplay">  < </button>
+            @for (fwbtn of fwbuttons; track $index){
+                <button 
+                kendoButton 
+                class="two-line-display"
+                [ngClass]="{ 'active-tab': activefwtab === fwbtn.value }">
+                <div class="line1">{{ fwbtn.label }}</div>
+                <div class="line2">{{ fwbtn.subtext }}</div>
+              </button>           
+            }
+            <button 
+            kendoButton 
+            class="two-line-display"
+            class="btndisplay">  > </button>
+          </div>
+
+          
+
+
+        </div>
+    }
+  </div>
+  

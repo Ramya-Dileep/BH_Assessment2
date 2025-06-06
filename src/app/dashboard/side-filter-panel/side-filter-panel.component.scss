@@ -85,7 +85,7 @@
   .nav-items {
     display: flex;
     flex-direction: column;
-    padding: 12px;
+    margin-left: 10px;
     font-family: 'MyFont';
 
     .project-node {
@@ -94,51 +94,55 @@
       .project-header {
         display: flex;
         align-items: center;
-        gap: 10px;
-        margin-bottom: 8px;
+        // padding-left: 12px;
+        margin-bottom: 5px;
     
         label {
           display: flex;
           align-items: center;
           gap: 8px;
-          font-weight: 600;
+          font-weight: normal;
           font-size: 14px;
           color: #05322b;
         }
       }
   
-      .train-list {
-        padding-left: 24px;
-  
+      .train-list {  
+        margin-bottom: 5px;
         .train-node {
-          margin-bottom: 10px;
 
           .train-header {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
+            margin-left: 10px;
+            margin-bottom: 5px;
         
             label {
               display: flex;
               align-items: center;
               gap: 8px;
-              font-weight: 600;
+              font-weight: normal;
               font-size: 14px;
               color: #05322b;
             }
           }
+
+          .joblist{
+            margin-left: 10px;
+          }
   
           ul {
             list-style: none;
-            margin: 6px 0 0;
-            padding-left: 24px;
+            padding-left: 40px;
+            // margin-bottom: 5px;
   
             li {
               label {
                 display: flex;
                 align-items: center;
                 gap: 6px;
+                font-weight: normal;
+                margin-bottom: 3px;
                 font-size: 13px;
                 color: #333;
               }
@@ -153,10 +157,17 @@
       }
     }
 
-    .expand-btn {
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 16;
+      font-size: 20px;
+      margin-right: 8px;
       background: none;
       border: none;
-      font-size: 14px;
+      font-size: 20px;
       cursor: pointer;
       color:#02A783;
       width: 20px;
@@ -177,10 +188,9 @@
     margin-bottom: 10px;
     margin-left: 20px;
     font-size: 14px;
+    margin-top: 10px;
     border-radius: 16px;
     border: 1px solid #ccc;
-    margin-top: 10px;
-    border: 1px solid #ccc; // Default border
     transition: border-color 0.2s ease;
     &:focus {
       border-color: #999; 

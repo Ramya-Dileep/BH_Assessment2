@@ -52,19 +52,28 @@
         Results: {{ filteredProjects.length }} contract{{ filteredProjects.length !== 1 ? 's' : '' }}
       </div>
 
+      <div *ngIf="noDataFound" class="no-data-message">
+        No data found!
+      </div>
+
       @for (project of filteredProjects; track project.projectName) {
         <div class="project-node">
           <div class="project-header">            
             <button  class="material-symbols-outlined" (click)="toggleProject(project.projectName)">
                 {{ isProjectExpanded(project.projectName) ? 'arrow_drop_down' : 'arrow_right' }}
             </button>
-            <label>
+            <label class="project-label">
               <input
                 type="checkbox"
                 [checked]="isProjectSelected(project)"
                 (change)="toggleProjectSelection(project)"
               />
-              {{ project.projectName }}
+              <span class="projectName">{{ project.projectName }}</span>
+              @if (project.meta?.isFavourite){
+              <span class="material-symbols-outlined">
+                star_rate
+                </span>
+              }
             </label>
           </div>
 

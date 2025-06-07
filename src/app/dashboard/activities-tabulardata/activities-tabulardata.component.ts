@@ -32,15 +32,26 @@ export class ActivitiesTabulardataComponent {
   }
 
 
-  applyFilter(term: string) {
-    const lowerTerm = term?.toLowerCase() || '';
+applyFilter(term: string) {
+  const lowerTerm = term?.toLowerCase() || '';
 
-    this.filteredProjects = this.ispoData.filter(project =>
-      Object.values(project).some(value =>
-        value != null && value.toString().toLowerCase().includes(lowerTerm)
-      )
-    );
+  this.filteredProjects = this.ispoData.filter(project =>
+    this.deepSearch(project, lowerTerm)
+  );
+}
+
+private deepSearch(obj: any, searchTerm: string): boolean {
+  if (typeof obj === 'string' || typeof obj === 'number') {
+    return obj.toString().toLowerCase().includes(searchTerm);
   }
+
+  if (typeof obj === 'object' && obj !== null) {
+    return Object.values(obj).some(value => this.deepSearch(value, searchTerm));
+  }
+
+  return false;
+}
+
 
   
 }

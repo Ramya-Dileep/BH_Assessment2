@@ -2,10 +2,13 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow: hidden;
+
 }
 
 .header {
-  height: 60px;
+  // height: 60px;
+  height: 8vh;
   background-color: #05322B;
   color: white;
   display: flex;
@@ -14,6 +17,7 @@
 }
 
 .main-content {
+  height: 92vh;
   display: flex;
   flex-grow: 1;
 }
@@ -41,19 +45,21 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-
-.content-area {
-  flex-grow: 1;
-  padding: 20px;
   background-color: #ecf0f1;
+  height: 90vh;
 }
+
+
+// .content-area {
+//   flex-grow: 1;
+//   padding: 20px;
+// }
 
 .filtersidebar {
   background-color: white;
   color: white;
-  width: 400px;
+  width: 300px;
+  // width: 400px;
   transition: width 0.3s ease;
 
   &.collapsed {

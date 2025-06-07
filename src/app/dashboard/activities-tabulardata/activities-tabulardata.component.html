@@ -16,7 +16,8 @@
 </div>
   </div>
   
-  <kendo-grid [data]="filteredProjects">
+  <kendo-grid [data]="filteredProjects" [height]="400"
+  scrollable="scrollable">
     <kendo-grid-column field="name" title="Name" [width]="150"></kendo-grid-column>
     <kendo-grid-column field="username" title="Username" [width]="100"></kendo-grid-column>
     <kendo-grid-column field="email" title="Email" [width]="200"></kendo-grid-column>

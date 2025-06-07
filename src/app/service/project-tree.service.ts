@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 
 export interface Project {
   projectId: string;
@@ -20,46 +22,16 @@ export interface Project {
 
 
 export class ProjectTreeService {
+
+  private readonly dataUrl = 'assets/JSON/projecttreedata.json';
+
+  private projects : Project[] =[];
    
-    private projects: Project[] =[
-      {
-        projectId: 'p1',
-        contractName: 'Phoenix GTG',
-        projectStatus: 'Active',
-        isMyContracts: 'True',
-        isFavourite: 'False',
-        trains: [
-          { trainId: 't1', trainName: 'Phoenix-1', jobNumber: ['PHX-1001', 'PHX-1002'] },
-          { trainId: 't2', trainName: 'Phoenix-2', jobNumber: ['PHX-1003'] }
-        ]
-      },
-      {
-        projectId: 'p2',
-        contractName: 'Orion Gas Plant',
-        projectStatus: 'Active',
-        isMyContracts: 'False',
-        isFavourite: 'True',
-        trains: [
-          { trainId: 't3', trainName: 'Orion-A', jobNumber: ['ORN-2001'] },
-          { trainId: 't4', trainName: 'Orion-B', jobNumber: ['ORN-2002'] }
-        ]
-      },
-      {
-        projectId: 'p3',
-        contractName: 'Nova Hydrogen GTG',
-        projectStatus: 'Active',
-        isMyContracts: 'True',
-        isFavourite: 'True',
-        trains: [
-          { trainId: 't5', trainName: 'Nova-T1', jobNumber: ['NVA-3001', 'NVA-3002'] }
-        ]
-      }
-    ];
-  
-    constructor() {}
-  
+  constructor(private http: HttpClient) {}  
+
     getProjects(): Observable<Project[]> {
-      return of(this.projects);
+      // return of(this.projects);
+        return this.http.get<Project[]>(this.dataUrl);
     }
   
     getMyContracts(): Observable<Project[]> {

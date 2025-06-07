@@ -1,7 +1,8 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  // width: 400px;
+  width: 300px;
   background-color: white;
   transition: width 0.3s ease;
 
@@ -15,13 +16,14 @@
     justify-content: space-between;
     margin-bottom: 10px;
     border-bottom: 1px solid grey;
-    height: 60px;
+    height: 50px;
 
     h6 {
       margin-left: 10px;
       font-size: 16px;
       font-weight: bold;
       color: black;
+      text-align: center;
       // font-family: 'MyFont';
     }
 
@@ -53,14 +55,14 @@
     border-radius: 6px;
     border: 1px solid #EBEFEE;
     background-color: #EBEFEE;
-    margin: 15px;
+    margin: 8px;
     font-family: 'MyFont';
     font-weight: bold;
+    width: 90%;
   
     .contract-tab {
-      padding: 6px 10px;
-      font-size: 13px;
-      font-weight: bolder;
+      font-size: 12px;
+      font-weight: bold;
       color: grey;
       background-color: none;
       border: none;
@@ -105,6 +107,27 @@
           font-size: 14px;
           color: #05322b;
         }
+
+        .project-label {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%; 
+}
+
+        .projectName{
+          flex: 1; 
+        }
+
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 1,
+          'wght' 500,
+          'GRAD' 0,
+          'opsz' 28;
+          margin-right: 10px;
+          color: #014D40;
+}
       }
   
       .train-list {  
@@ -186,7 +209,7 @@
     padding: 6px 10px;
     align-items: center;
     margin-bottom: 10px;
-    margin-left: 20px;
+    margin-left: 10px;
     font-size: 14px;
     margin-top: 10px;
     border-radius: 16px;
@@ -203,7 +226,7 @@
     padding: 6px 10px;
     align-items: center;
     margin-bottom: 10px;
-    margin-left: 20px;
+    margin-left: 10px;
     font-size: 14px;
     border-radius: 6px;
     border: 1px solid #147D64;
@@ -220,4 +243,13 @@
     color: #05322b;
     margin-bottom: 10px;
   }
+
+  .no-data-message {
+  padding: 1rem;
+  color: #666;
+  text-align: center;
+  margin-top: 50px;
+}
+
+
 }

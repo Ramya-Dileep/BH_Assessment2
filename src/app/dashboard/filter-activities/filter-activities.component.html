@@ -1,36 +1,3 @@
-<!-- <div class="expandable-panel">
-    <div class="panel-header" (click)="togglePanel()">
-      <span class="title">{{ title }}</span>
-      <span class="toggle-icon">
-        {{ isExpanded ? '▲' : '▼' }}
-      </span>
-    </div>
-  
-    @if (isExpanded) {
-      <div class="panel-body">
-        <ng-content></ng-content>
-      </div>
-    }
-  </div> -->
-  
-  <!-- <div class="kendo-expandable-panel">
-
-    <div class="k-panel-header" (click)="togglePanel()">
-        <span class="title">{{ title }}</span>
-      <button 
-        kendoButton 
-        [icon]="isExpanded() ? 'chevron-up' : 'chevron-down'" 
-        iconType="font">
-      </button>
-    </div>
-  
-    @if (isExpanded()) {
-      <div class="k-panel-content">
-        <ng-content></ng-content>
-      </div>
-    }
-  </div> -->
-
   <div class="kendo-expandable-panel">
     <div class="k-panel-header">
       <span class="title">{{ title }}</span>
@@ -46,7 +13,7 @@
       </span>
 
       <span class="toggle-icon"  (click)="togglePanel()">
-        {{ isExpanded() ? '▲' : '▼' }}
+        {{ isExpanded() ?  '▼' : '▲' }}
       </span>
     </div>
     </div>
@@ -62,7 +29,8 @@
                   [data]="filter.data"
                   [formControl]="filter.control"
                   [textField]="'text'"
-                  [valueField]="'value'">
+                  [valueField]="'value'"
+                  >
                 </kendo-dropdownlist>
               </div>
             }
@@ -110,7 +78,6 @@
           <div class="fwbtn">
             <button 
                 kendoButton 
-                class="two-line-display"
                 class="btndisplay">  < </button>
             @for (fwbtn of fwbuttons; track $index){
                 <button 
@@ -123,7 +90,6 @@
             }
             <button 
             kendoButton 
-            class="two-line-display"
             class="btndisplay">  > </button>
           </div>
 

@@ -25,10 +25,11 @@ export class SideFilterPanelComponent implements OnInit, OnDestroy {
   selectedJobs = new Set<string>();
   expandedProjects = new Set<string>();
   expandedTrains = new Set<string>();
+  noDataFound = false;
 
   allProjects: ProjectTreeNode[] = [];
   filteredProjects: ProjectTreeNode[] = [];
-
+  originalProjects :  ProjectTreeNode[] = [];
   private collapseSubscription = new Subscription();
   private searchSubscription = new Subscription();
   private projectSubscription = new Subscription();
@@ -48,6 +49,7 @@ export class SideFilterPanelComponent implements OnInit, OnDestroy {
     });
 
     this.projectSubscription = this.projectService.getProjects().subscribe((projects: Project[]) => {
+      console.log(projects)
       this.allProjects = projects.map((project) => ({
         projectName: project.contractName,
         trains: project.trains.map((train) => ({
@@ -62,6 +64,10 @@ export class SideFilterPanelComponent implements OnInit, OnDestroy {
 
       this.applyTabFilter();
       this.selectFirstProjectAndJobs();
+
+      this.filteredProjects = [...this.allProjects];
+      this.originalProjects = [...this.filteredProjects];
+
     });
   }
 
@@ -93,37 +99,79 @@ export class SideFilterPanelComponent implements OnInit, OnDestroy {
         this.filteredProjects = [...this.allProjects];
     }
 
+    this.originalProjects = [...this.filteredProjects];
     this.applySearch(this.searchControl.value || '');
   }
 
-  applySearch(term: string): void {
-    const value = term.toLowerCase().trim();
+  // applySearch(term: string): void {
+  //   const value = term.toLowerCase().trim();
 
-    this.filteredProjects = this.filteredProjects
-      .map((project) => {
-        const projectMatch = project.projectName.toLowerCase().includes(value);
+  //   this.filteredProjects = this.filteredProjects
+  //     .map((project) => {
+  //       const projectMatch = project.projectName.toLowerCase().includes(value);
 
-        const filteredTrains = project.trains
-          .map((train) => {
-            const matchingJobs = train.jobNumbers.filter((job) =>
-              job.toLowerCase().includes(value)
-            );
-            return { ...train, jobNumbers: matchingJobs };
-          })
-          .filter((train) => train.jobNumbers.length > 0);
+  //       const filteredTrains = project.trains
+  //         .map((train) => {
+  //           const matchingJobs = train.jobNumbers.filter((job) =>
+  //             job.toLowerCase().includes(value)
+  //           );
+  //           return { ...train, jobNumbers: matchingJobs };
+  //         })
+  //         .filter((train) => train.jobNumbers.length > 0);
 
-        if (projectMatch || filteredTrains.length > 0) {
-          return {
-            ...project,
-            trains: projectMatch ? project.trains : filteredTrains,
-          };
-        }
-        return null;
-      })
-      .filter((p): p is ProjectTreeNode => !!p);
+  //       if (projectMatch || filteredTrains.length > 0) {
+  //         return {
+  //           ...project,
+  //           trains: projectMatch ? project.trains : filteredTrains,
+  //         };
+  //       }
+  //       return null;
+  //     })
+  //     .filter((p): p is ProjectTreeNode => !!p);
 
+  //   this.selectFirstProjectAndJobs();
+  // }
+
+
+applySearch(term: string): void {
+  const value = term.toLowerCase().trim();
+
+  if (!value) {
+    // If search box is cleared, reset data
+    this.filteredProjects = [...this.originalProjects]; // Ensure originalProjects is cached on init
+    this.noDataFound = false;
     this.selectFirstProjectAndJobs();
+    return;
   }
+
+  this.filteredProjects = this.originalProjects
+    .map((project) => {
+      const projectMatch = project.projectName.toLowerCase().includes(value);
+
+      const filteredTrains = project.trains
+        .map((train) => {
+          const matchingJobs = train.jobNumbers.filter((job) =>
+            job.toLowerCase().includes(value)
+          );
+          return { ...train, jobNumbers: matchingJobs };
+        })
+        .filter((train) => train.jobNumbers.length > 0);
+
+      if (projectMatch || filteredTrains.length > 0) {
+        return {
+          ...project,
+          trains: projectMatch ? project.trains : filteredTrains,
+        };
+      }
+      return null;
+    })
+    .filter((p): p is ProjectTreeNode => !!p);
+
+  this.noDataFound = this.filteredProjects.length === 0;
+
+  this.selectFirstProjectAndJobs();
+}
+
 
   selectFirstProjectAndJobs(): void {
     this.selectedJobs.clear();

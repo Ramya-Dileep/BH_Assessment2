@@ -8,7 +8,7 @@
       <div class="nav-actions">
         <div class="datedisplay k-text k-font-medium">
             <span class="label">Last Uploaded :</span>
-            <span class="date">{{ today | date: 'dd/MMM/yyyy' }}</span>
+            <span class="date">{{ today | date: 'dd MMM yyyy' }}</span>
           </div>
         <span class="divider">|</span>
         <span class="label">YTD</span>
@@ -92,13 +92,13 @@
         
         <!-- </div>
       </form> -->
-      <div>
         <app-filter-activities title="Filter Activities"></app-filter-activities>
-      </div>
 
-      <div>
-        <app-activities-tabulardata></app-activities-tabulardata>
-      </div>
+        <!-- <app-activities-tabulardata></app-activities-tabulardata> -->
+
+         <div class="scrollable-content">
+          <app-activities-tabulardata></app-activities-tabulardata>
+         </div>
       
   </div>
   

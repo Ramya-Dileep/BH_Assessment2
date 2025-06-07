@@ -59,11 +59,11 @@
         .dropdown-item {
           display: flex;
           flex-direction: column;
-          width: 100px;
+          width: 120px;
       
           .dropdown-label {
             font-weight: 500;
-            margin-bottom: 6px;
+            margin-bottom: 3px;
             font-size: 14px;
             color: #333;
           }
@@ -74,13 +74,13 @@
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
-        padding: 12px;
+        padding: 5px;
         .btndisplay {
-            padding: 6px 12px;
+            // padding: 6px 12px;
             background-color: #CED7D4;
             color:#595959;
             border: none;
-            min-width: 100px;
+            min-width: 150px;
             border-radius: 16px;
             border: 1px solid #ccc;
             font-size: 14px;
@@ -101,14 +101,15 @@
         display: flex;
         flex-wrap: wrap;
         padding: 10px;
-        justify-content: space-evenly;
+        padding-left: 20px;
+        justify-content: space-between;        
 
         .two-line-display {
             padding: 6px 12px;
             background-color: #FEFBE6;
             color:#595959;
             border: none;
-            width: 220px;
+            width: 250px;
             border-radius: 4px;
             border: 1px solid #A0A0A0;
             font-size: 14px;
@@ -122,6 +123,7 @@
               }
           
               .line2 {
+                font-weight: normal;
                 font-size: 12px;
                 color: #666;
               }

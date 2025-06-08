@@ -1,56 +1,71 @@
-import { Component } from '@angular/core';
-import { HeaderComponent } from "./header/header.component";
+import { Component, ChangeDetectorRef, AfterViewInit, NgZone, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from "./header/header.component";
 import { SideIconPanelComponent } from "./side-icon-panel/side-icon-panel.component";
 import { SideFilterPanelComponent } from "./side-filter-panel/side-filter-panel.component";
-import {SidebarService} from '../service/sidebar.service'
-import { Subscription } from 'rxjs';
 import { MaincontentHeaderComponent } from './maincontent-header/maincontent-header.component';
+import { SidebarService } from '../service/sidebar.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, SideIconPanelComponent, SideFilterPanelComponent, MaincontentHeaderComponent],
+  imports: [
+    CommonModule,
+    HeaderComponent,
+    SideIconPanelComponent,
+    SideFilterPanelComponent,
+    MaincontentHeaderComponent
+  ],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss'
+  styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  toolName : string = "OTR"
-
+  toolName: string = 'OTR';
   isSidebarCollapsed = false;
-  private collapseSubscription: Subscription = new Subscription;
+  isFullscreen = false;
+
   selectedContracts: string[] = [];
-  SelectedContractsForMain : string = ""
+  SelectedContractsForMain: string = '';
 
-  onContractsChanged(contracts: string[]) {
-    this.selectedContracts = contracts;
-    this.SelectedContractsForMain  = this.selectedContracts.join(', ')
-  }
+  private collapseSubscription: Subscription = new Subscription();
 
-  constructor(private sidebarService: SidebarService) {
+  constructor(
+    private sidebarService: SidebarService,
+    private cdr: ChangeDetectorRef,
+    private zone: NgZone
+  ) {}
 
-  }
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.collapseSubscription = this.sidebarService.isCollapsed$.subscribe(
       (state) => {
-        this.isSidebarCollapsed = state;
+        this.zone.run(() => {
+          this.isSidebarCollapsed = state;
+        });
       }
     );
   }
 
-  ngOnDestroy() {
+  ngAfterViewInit(): void {
+    // Ensure this gets recalculated after the view loads
+    this.SelectedContractsForMain = this.selectedContracts.join(', ');
+    this.cdr.detectChanges(); // Force change detection
+  }
+
+  onContractsChanged(contracts: string[]): void {
+    console.log('Contracts changed:', contracts);
+    this.selectedContracts = contracts;
+    this.SelectedContractsForMain = this.selectedContracts.join(', ');
+  }
+
+  onFullscreenToggle(fullscreen: boolean): void {
+    this.isFullscreen = fullscreen;
+  }
+
+  ngOnDestroy(): void {
     if (this.collapseSubscription) {
       this.collapseSubscription.unsubscribe();
     }
   }
-
-  isFullscreen = false;
-
-  onFullscreenChanged(fullscreen: boolean) {
-  this.isFullscreen = fullscreen;
 }
-}
-
-

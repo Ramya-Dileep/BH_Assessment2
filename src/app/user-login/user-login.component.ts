@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators,ReactiveFormsModule } from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../service/auth.service';
+import { User } from '../models/user.model';
 
 
 @Component({
@@ -10,7 +11,7 @@ import {AuthService} from '../service/auth.service';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './user-login.component.html',
-  styleUrl: './user-login.component.scss'
+  styleUrls: ['./user-login.component.scss']
 })
 export class UserLoginComponent implements OnInit {
 
@@ -33,14 +34,26 @@ onLogin() {
     const userName = this.loginForm.get('userName')?.value;
     const rememberMe = this.loginForm.get('rememberMe')?.value;
 
-    if (rememberMe) {
-      localStorage.setItem('LoggedUser', userName);
-    } else {
-      sessionStorage.setItem('LoggedUser', userName);
-      localStorage.removeItem('LoggedUser');
-    }
+    // if (rememberMe) {
+    //   localStorage.setItem('LoggedUser', userName);
+    // } else {
+    //   sessionStorage.setItem('LoggedUser', userName);
+    //   localStorage.removeItem('LoggedUser');
+    // }
 
-    this.authService.setCurrentUser(userName);
+    // this.authService.setCurrentUser(userName);
+
+      const user: User = { userName }; // Or whatever shape your `User` model has
+
+      if (rememberMe) {
+        localStorage.setItem('LoggedUser', JSON.stringify(user));
+      } else {
+        sessionStorage.setItem('LoggedUser', JSON.stringify(user));
+        localStorage.removeItem('LoggedUser');
+      }
+
+      this.authService.setCurrentUser(user);
+
 
     this.router.navigate(['/dashboard']).then(success => {
       console.log('Navigation success?', success);

@@ -19,10 +19,18 @@ export class UserLoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private router: Router,private authService: AuthService)
   {
-     const rememberedUser = localStorage.getItem('LoggedUser');
-
+    const remembered = localStorage.getItem('LoggedUser');
+      let rememberedUser = '';
+      if (remembered) {
+        try {
+          rememberedUser = JSON.parse(remembered).userName || '';
+        } catch (_) {
+          console.warn('Failed to parse remembered user');
+        }
+      }
+    const rememberedSSO = localStorage.getItem('RememberedSSO') || '';
     this.loginForm = this.fb.group({
-    userName: new FormControl(rememberedUser || '', Validators.required),
+    userName: new FormControl(rememberedSSO, Validators.required),
     password: new FormControl('', Validators.required),
     rememberMe: new FormControl(!!rememberedUser) // true if user is remembered
   });
@@ -45,14 +53,7 @@ onLogin() {
 
       const user: User = { userName }; // Or whatever shape your `User` model has
 
-      if (rememberMe) {
-        localStorage.setItem('LoggedUser', JSON.stringify(user));
-      } else {
-        sessionStorage.setItem('LoggedUser', JSON.stringify(user));
-        localStorage.removeItem('LoggedUser');
-      }
-
-      this.authService.setCurrentUser(user);
+      this.authService.setCurrentUser(user, rememberMe);
 
 
     this.router.navigate(['/dashboard']).then(success => {

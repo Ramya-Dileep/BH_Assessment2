@@ -6,36 +6,37 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class AuthService {
-
-  private currentUserSubject = new BehaviorSubject<User | null>(null);
-
-  setCurrentUser(user: User): void {
-    this.currentUserSubject.next(user);
-    localStorage.setItem('LoggedUser', JSON.stringify(user));
-  }
+  private currentUserSubject: BehaviorSubject<User | null>;
+  public currentUser$;
 
   constructor() {
-    const storedUser = localStorage.getItem('LoggedUser');
-    const parsedUser = storedUser ? JSON.parse(storedUser) as User : null;
-    this.currentUserSubject = new BehaviorSubject<User | null>(parsedUser);
+    const stored = sessionStorage.getItem('LoggedUser') || localStorage.getItem('LoggedUser');
+    const user = stored ? JSON.parse(stored) as User : null;
+    this.currentUserSubject = new BehaviorSubject<User | null>(user);
+    this.currentUser$ = this.currentUserSubject.asObservable();
   }
 
-  currentUser$ = this.currentUserSubject.asObservable();
-
-
   getCurrentUser(): User | null {
-  const user = this.currentUserSubject.value;
-  if (user) return user;
+    return this.currentUserSubject.value;
+  }
 
-  const stored = sessionStorage.getItem('LoggedUser') || localStorage.getItem('LoggedUser');
-  return stored ? JSON.parse(stored) as User : null;
-
+  setCurrentUser(user: User, remember: boolean): void {
+    this.currentUserSubject.next(user);
+    if (remember) {
+      localStorage.setItem('LoggedUser', JSON.stringify(user));
+      localStorage.setItem('RememberedSSO', user.userName);   
+      sessionStorage.removeItem('LoggedUser');
+    } else {
+      sessionStorage.setItem('LoggedUser', JSON.stringify(user));
+      localStorage.removeItem('LoggedUser');
+      localStorage.removeItem('RememberedSSO');
+    }
   }
 
   clearUser(): void {
-  this.currentUserSubject.next(null);
-  localStorage.removeItem('LoggedUser');
-  sessionStorage.removeItem('LoggedUser');
+    this.currentUserSubject.next(null);
+    localStorage.removeItem('LoggedUser');
+    sessionStorage.removeItem('LoggedUser');
   }
 
   isLoggedIn(): boolean {

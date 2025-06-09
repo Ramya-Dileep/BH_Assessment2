@@ -33,11 +33,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ];
 
   ngOnInit(): void {
-    const savedUser = localStorage.getItem('LoggedUser');
-    if (savedUser) {
-      const user: User = JSON.parse(savedUser);
-      this.authService.setCurrentUser(user);
-    }
+    // const savedUser = localStorage.getItem('LoggedUser');
+    // if (savedUser) {
+    //   const user: User = JSON.parse(savedUser);
+    //   this.authService.setCurrentUser(user);
+    // }
 
     this.subscription = this.authService.currentUser$.subscribe((user: User | null) => {
       if (user) {
@@ -48,9 +48,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onlogout(): void {
-    this.authService.clearUser();
-    this.router.navigate(['/login']);
-  }
+  this.authService.clearUser();
+  this.router.navigate(['/login'], { replaceUrl: true });
+}
 
   onMenuClick()
   {

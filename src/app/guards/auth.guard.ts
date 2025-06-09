@@ -11,7 +11,7 @@ console.log("User in guard:", authService.getCurrentUser());
 const user = authService.getCurrentUser();
   console.log("Guard check - user:", user);
 
-  if (!user) {
+   if (!user || !user.userName) {
     return router.parseUrl('/login');
   }
 

@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onlogout(): void {
   this.authService.clearUser();
-  this.router.navigate(['/login'], { replaceUrl: true });
+  this.router.navigate(['/login']);
 }
 
   onMenuClick()

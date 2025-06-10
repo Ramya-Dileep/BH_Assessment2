@@ -1,12 +1,13 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, RouteReuseStrategy } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
+import { NoReuseStrategy } from './Common/no-reuse.strategy';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideHttpClient(), 
-             provideAnimations(),]
+             provideAnimations(), { provide: RouteReuseStrategy, useClass: NoReuseStrategy }]
 };
 
 

@@ -48,13 +48,11 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    // Ensure this gets recalculated after the view loads
     this.SelectedContractsForMain = this.selectedContracts.join(', ');
-    this.cdr.detectChanges(); // Force change detection
+    this.cdr.detectChanges();
   }
 
   onContractsChanged(contracts: string[]): void {
-    console.log('Contracts changed:', contracts);
     this.selectedContracts = contracts;
     this.SelectedContractsForMain = this.selectedContracts.join(', ');
   }

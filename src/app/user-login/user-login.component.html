@@ -38,6 +38,9 @@
       <label for="rememberMe">Remember me</label>
     </div>
 
+    <div *ngIf="invalidCredentials" class="errormsg">
+      Invalid credentials. Please try again.
+    </div>
 
       <button class="login" type="submit" [disabled]="loginForm.invalid">LOGIN</button>
     </form>

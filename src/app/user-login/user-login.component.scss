@@ -1,128 +1,129 @@
+
+$primary-color: #147D64;
+$font-family: 'Calibri';
+$input-height: 35px;
+$input-width: 300px;
+$font-size-sm: 0.85rem;
+$error-color: red;
+$box-shadow-default: 0px 4px 12px rgba(0, 0, 0, 0.1);
+
+/* Layout */
 .loginBackground {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: white;
 }
 
-.UserLabel{
-    font-size: 0.85rem; 
-    padding-left: 0.2cm;
-    font-weight: bold; 
-    align-items: center;
-    font-family: 'Calibri';
-}
-
-.loginContent{
+.loginContent {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   padding: 40px;
   background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: $box-shadow-default;
+}
+
+/* Logo */
+.login-logo {
+  display: block;
+  margin: 0 auto 20px;
+  max-width: 150px;
+  height: auto;
+}
+
+/* Headings */
+h5 {
+  text-align: center;
+  color: black;
+  font-family: $font-family;
+}
+
+/* Form */
+form {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Labels */
+.UserLabel {
+  font-size: $font-size-sm;
+  padding-left: 0.2cm;
+  font-weight: bold;
+  font-family: $font-family;
+  align-items: center;
 }
 
 .required-asterisk {
-  color: red;
+  color: $error-color;
   margin-left: 2px;
 }
 
-h5 {
-    text-align: center;
-    color: black;
-    font-family: 'Calibri';
-}
-
-form {
-    width: 350px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-
-.UserInput::placeholder{
-    font-size: 0.85rem; 
-    padding-left: 0.2cm;
-    font-family: 'Calibri';
-
-}
-
+/* Input Fields */
 .UserInput {
   background-color: white;
   color: black;
   border: 1px solid grey;
-  width: 300px;
-  height: 35px;
-  font-family: 'Calibri';
-  margin: 0 auto;           
-  padding-left: 8px;        
-  box-sizing: border-box;   
-  display: block;           
-}
+  width: $input-width;
+  height: $input-height;
+  font-family: $font-family;
+  padding-left: 8px;
+  box-sizing: border-box;
+  display: block;
 
-
-.login {
-    width: 300px;
-    height: 35px;
-    border: 1px solid #147D64;
-    background-color: #147D64;
-    cursor: pointer;
-    font-size: 16px;
-    color: white;
-    font-family: 'Calibri';
-    text-align: center;
-    line-height: 35px; 
-    border-radius: 4px; 
-}
-
-
-.material-icons {
-    position: absolute;
-    top: 48%;
-    left: 42%;
-    font-size: 20px;
-    color: #999;
-    padding-right: 5%;
-}
-
-
-.errormsg{
-    color: red;
-}
-  
-  input.ng-invalid.ng-touched {
-    border: 1px solid red;
+  &::placeholder {
+    font-size: $font-size-sm;
+    font-family: $font-family;
+    padding-left: 0.2cm;
   }
 
-  input:focus {
+  &:focus {
     outline: none;
     box-shadow: none;
-  }  
+  }
 
-  .checkboxContainer {
+  &.ng-invalid.ng-touched {
+    border-color: $error-color;
+  }
+}
+
+/* Button */
+.login {
+  width: $input-width;
+  height: $input-height;
+  border: 1px solid $primary-color;
+  background-color: $primary-color;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  font-family: $font-family;
+  text-align: center;
+  line-height: $input-height;
+  border-radius: 4px;
+}
+
+/* Error Message */
+.errormsg {
+  color: $error-color;
+}
+
+/* Checkbox */
+.checkboxContainer {
   display: flex;
   align-items: center;
-  width: 300px;        
-  margin: 0 auto;      
-  font-family: 'Calibri';
-  font-size: 0.85rem;
-}
+  width: $input-width;
+  margin: 0 auto;
+  font-family: $font-family;
+  font-size: $font-size-sm;
 
-.checkboxContainer input[type="checkbox"] {
-  margin-right: 8px;   
-}
-
-.login-logo {
-  display: block;
-  margin: 0 auto 10px auto;  
-  max-width: 150px;          
-  height: auto;
-  margin-bottom: 20px;
+  input[type='checkbox'] {
+    margin-right: 8px;
+  }
 }
 

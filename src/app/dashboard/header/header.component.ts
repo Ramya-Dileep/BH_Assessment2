@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userName: string | null = null;
   avatarUrl: string = 'assets/images/default-avatar.png';
   dropdownOpen = false;
+  isDropdownOpen = false; 
 
   private subscription = new Subscription();
 
@@ -47,11 +48,38 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
-  onlogout(): void {
-  this.authService.clearUser();
-  this.router.navigate(['/login']);
+  DropdownClose() {
+  setTimeout(() => {
+    this.isDropdownOpen = false;
+  }, 200); // Delay to allow button click to register
 }
 
+  toggleDropdown() {
+  this.isDropdownOpen = !this.isDropdownOpen;
+}
+
+//   onlogout(): void {
+//   this.authService.clearUser();
+//   this.router.navigate(['/login']);
+// }
+
+onLogout(event: MouseEvent) {
+  event.stopPropagation(); // Prevent blur from closing the dropdown before click
+  this.isDropdownOpen = false;
+  this.authService.clearUser();
+  this.router.navigate(['/login']);
+  console.log("Logging out...");
+}
+
+@HostListener('document:click', ['$event'])
+handleClickOutside(event: MouseEvent) {
+  const target = event.target as HTMLElement;
+
+  if (!this.eRef.nativeElement.contains(target)) {
+    this.isDropdownOpen = false;
+    this.dropdownOpen = false; // if you're using this for something else
+  }
+}
   onMenuClick()
   {
 console.log("clicked now")
@@ -61,16 +89,6 @@ console.log("clicked now")
     this.dropdownOpen = !this.dropdownOpen;
   }
 
-  DropdownClose() {
-    this.dropdownOpen = false;
-  }
-
-  @HostListener('document:click', ['$event'])
-  clickOutside(event: MouseEvent) {
-    if (!this.eRef.nativeElement.contains(event.target)) {
-      this.dropdownOpen = false;
-    }
-  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

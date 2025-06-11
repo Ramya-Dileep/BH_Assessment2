@@ -8,11 +8,12 @@ import { Output, EventEmitter } from '@angular/core';
 import { SidebarService } from '../../service/sidebar.service';
 import { ProjectTreeService, Project } from '../../service/project-tree.service';
 import { ProjectTreeNode } from '../../models/projectTree.model';
+import { TreeViewModule } from '@progress/kendo-angular-treeview';
 
 @Component({
   selector: 'app-side-filter-panel',
   standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule, MatIconModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, MatIconModule, TreeViewModule],
   templateUrl: './side-filter-panel.component.html',
   styleUrl: './side-filter-panel.component.scss',
 })

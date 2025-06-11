@@ -19,6 +19,7 @@ export class UserLoginComponent implements OnInit {
 
   loginForm: FormGroup;
   invalidCredentials: boolean = false;
+  loading = false;
 
   constructor(private fb: FormBuilder, private router: Router,private authService: AuthService, 
                 private loginService : LoginService)
@@ -41,25 +42,92 @@ export class UserLoginComponent implements OnInit {
   });
   }
 
-onLogin() {
 
-if (this.loginForm.valid) {
-      const { userName, password, rememberMe } = this.loginForm.value;
- 
-      this.loginService.login(userName, password).subscribe(isValid => {
+onLogin() {
+  console.log("login click");
+
+  if (this.loginForm.valid) {
+    const { userName, password, rememberMe } = this.loginForm.value;
+
+    this.loading = true;  // start spinner or disable button
+
+    this.loginService.login(userName, password).subscribe({
+      next: isValid => {
         if (isValid) {
           const user: User = { userName };
           this.authService.setCurrentUser(user, rememberMe);
-           this.invalidCredentials = false;
+          this.invalidCredentials = false;
           this.router.navigate(['/dashboard']);
         } else {
-           this.invalidCredentials = true;
+          this.invalidCredentials = true;
         }
-      });
-    } else {     
-     console.log('Form is invalid');
-    }
+      },
+      error: err => {
+        console.error('Login failed:', err);
+        this.invalidCredentials = true;
+      },
+      complete: () => {
+        this.loading = false;  // stop spinner / enable button
+      }
+    });
+  } else {
+    console.log('Form is invalid');
   }
+}
+
+
+//   onLogin() {
+//   console.log("login click");
+
+//   if (this.loginForm.valid) {
+//     const { userName, password, rememberMe } = this.loginForm.value;
+
+//     this.loading = true;  // Start spinner / disable button
+
+//     this.loginService.login(userName, password).subscribe({
+//       next: isValid => {
+//         if (isValid) {
+//           const user: User = { userName };
+//           this.authService.setCurrentUser(user, rememberMe);
+//           this.invalidCredentials = false;
+//           this.router.navigate(['/dashboard']);
+//         } else {
+//           this.invalidCredentials = true;
+//         }
+//       },
+//       error: err => {
+//         console.error('Login failed:', err);
+//         this.invalidCredentials = true;
+//       },
+//       complete: () => {
+//         this.loading = false; // Stop spinner / enable button
+//       }
+//     });
+//   } else {
+//     console.log('Form is invalid');
+//   }
+// }
+
+
+// onLogin() {
+// console.log("login click")
+// if (this.loginForm.valid) {
+//       const { userName, password, rememberMe } = this.loginForm.value;
+ 
+//       this.loginService.login(userName, password).subscribe(isValid => {
+//         if (isValid) {
+//           const user: User = { userName };
+//           this.authService.setCurrentUser(user, rememberMe);
+//            this.invalidCredentials = false;
+//           this.router.navigate(['/dashboard']);
+//         } else {
+//            this.invalidCredentials = true;
+//         }
+//       });
+//     } else {     
+//      console.log('Form is invalid');
+//     }
+//   }
 
   // if (this.loginForm.valid) {
   //   console.log("login valid")

@@ -16,9 +16,17 @@
   </div>
 
 
- <div class="profile">
-    <img src="assets/Logos/Avatar-user.jpg" class="avatar" alt="User Avatar" (click)="onlogout()" tabindex="0" (blur)="DropdownClose()" />
+  <div class="profile" (click)="toggleDropdown()" tabindex="0" (blur)="DropdownClose()">
+  <img src="assets/Logos/Avatar-user.jpg" class="avatar" alt="User Avatar" />
+  <div class="dropdown" *ngIf="isDropdownOpen">
+    <button class="logout-btn" (click)="onLogout($event)">Logout</button>
   </div>
+</div>
+
+
+ <!-- <div class="profile">
+    <img src="assets/Logos/Avatar-user.jpg" class="avatar" alt="User Avatar" (click)="onlogout()" tabindex="0" (blur)="DropdownClose()" />
+  </div> -->
 
 </div>
 

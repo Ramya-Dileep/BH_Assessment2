@@ -18,10 +18,21 @@
     </div>
   </div>
 
+   @if (loading) {
+    <kendo-loader
+      [size]="'large'"
+      [themeColor]="'primary'"
+      [type]="'infinite-spinner'"
+      style="display: flex; justify-content: center; margin: 20px; height: 400px; color : #147d64">
+    </kendo-loader>
+  } @else {
+
   <kendo-grid
     [data]="filteredProjects"
     [height]="isFullscreen ? 900 : 400"
     scrollable="scrollable"
+    [sortable]="true"           
+    
   >
     <kendo-grid-column field="name" title="Name" [width]="150"></kendo-grid-column>
     <kendo-grid-column field="username" title="Username" [width]="100"></kendo-grid-column>
@@ -31,4 +42,6 @@
     <kendo-grid-column field="address.city" title="City" [width]="120"></kendo-grid-column>
     <kendo-grid-column field="address.zipcode" title="Zipcode" [width]="120"></kendo-grid-column>
   </kendo-grid>
+
+}
 </div>

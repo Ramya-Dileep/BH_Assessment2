@@ -22,6 +22,23 @@
       <div class="k-panel-content">
 
         <div class="dropdown-wrapper">
+  <div *ngFor="let filter of filters" class="dropdown-item">
+    <label class="dropdown-label">{{ filter.label }}</label>
+    <kendo-dropdownlist
+      [data]="filter.data"
+      [formControl]="filter.control"
+      [textField]="'text'"
+      [valueField]="'value'"
+      [popupSettings]="{ appendTo: 'root' }"
+      (valueChange)="onSelectionChnage($event,'data')"
+     
+      >
+    </kendo-dropdownlist>
+  </div>
+</div>
+
+
+        <!-- <div class="dropdown-wrapper">
             @for (filter of filters; track $index) {
               <div class="dropdown-item">
                 <label class="dropdown-label">{{ filter.label }}</label>
@@ -30,11 +47,14 @@
                   [formControl]="filter.control"
                   [textField]="'text'"
                   [valueField]="'value'"
+                    (valueChange)="onFilterChange($event, filter.label)"
                   >
                 </kendo-dropdownlist>
               </div>
             }
-          </div>
+          </div> -->
+
+
 
         <!-- <div class="dropdown-wrapper">
             @for (filter of filters; track $index) {
@@ -50,19 +70,6 @@
   }
           </div> -->
 
-          <!-- <div class="dropdown-wrapper">
-            @for (filter of filters; track $index) {
-              <div class="dropdown-item">
-                <label class="dropdown-label">{{ filter.label }}</label>
-                <kendo-multiselect
-                  [data]="filter.data"
-                  [formControl]="filter.control"
-                  [textField]="'text'"
-                  [valueField]="'value'">
-                </kendo-multiselect>
-              </div>
-            }
-          </div> -->
           
           <div class="filterbtn">
             @for (btn of buttons; track $index){

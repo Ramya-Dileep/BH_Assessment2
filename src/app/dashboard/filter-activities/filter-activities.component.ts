@@ -2,14 +2,14 @@ import { SVGIcon } from './../../../../node_modules/@progress/kendo-svg-icons/di
 import { Component, Input, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonsModule } from '@progress/kendo-angular-buttons'; 
-import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
+import { DropDownListModule, DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MultiSelectModule } from '@progress/kendo-angular-dropdowns';
 
 @Component({
   selector: 'app-filter-activities',
   standalone: true,
-  imports: [ButtonsModule, CommonModule, ReactiveFormsModule, DropDownListModule, MultiSelectModule],
+  imports: [ButtonsModule, CommonModule, ReactiveFormsModule, DropDownsModule, MultiSelectModule],
   templateUrl: './filter-activities.component.html',
   styleUrl: './filter-activities.component.scss'
 })
@@ -17,122 +17,78 @@ import { MultiSelectModule } from '@progress/kendo-angular-dropdowns';
 export class FilterActivitiesComponent implements OnInit {
 
 
+filters = [
+  {
+    label: 'View As',
+    data: [
+      { text: 'Individual', value: 'Individual' },
+      { text: 'Project', value: 'Project' },
+      { text: 'Summary', value: 'Summary' }
+    ],
+    control: new FormControl({ text: 'Individual', value: 'Individual' })
+  },
+  {
+    label: 'Functions',
+    data: [
+      { text: 'ENG', value: 'ENG' },
+      { text: 'TECH', value: 'TECH' },
+      { text: 'Test', value: 'Test' }
+    ],
+    control: new FormControl({ text: 'ENG', value: 'ENG' })
+  },
+  {
+    label: 'Document Type',
+    data: [
+      { text: 'Internal', value: 'Internal' },
+      { text: 'Step', value: 'Step' }
+    ],
+    control: new FormControl({ text: 'Internal', value: 'Internal' })
+  },
+  {
+    label: 'Activity Status',
+    data: [
+      { text: 'Not Completed', value: 'Not Completed' },
+      { text: 'Completed', value: 'Completed' },
+      { text: 'Will Meet', value: 'Will Meet' }
+    ],
+    control: new FormControl({ text: 'Not Completed', value: 'Not Completed' })
+  },
+  {
+    label: 'Activity Type',
+    data: [
+      { text: '510', value: '510' },
+      { text: '560', value: '560' }
+    ],
+    control: new FormControl({ text: '510', value: '510' })
+  },
+  {
+    label: 'Finish By',
+    data: [
+      { text: 'Late Finish', value: 'Late Finish' },
+      { text: 'Early Finish', value: 'Early Finish' },
+      { text: 'On Time', value: 'On Time' }
+    ],
+    control: new FormControl({ text: 'Late Finish', value: 'Late Finish' })
+  },
+  {
+    label: 'Date Type',
+    data: [
+      { text: 'Business', value: 'Business' },
+      { text: 'EU', value: 'EU' }
+    ],
+    control: new FormControl({ text: 'Business', value: 'Business' })
+  }
+];
+
   // filters = [
-  //   { label: 'View As',
-  //      data: [{text: 'Individual', value :'Individual'} ,
-  //        {text: 'Project', value :'Project'},
-  //        {text: 'Summary', value :'Summary'}], 
-  //      control: new FormControl('Individual') },
-  //   { label: 'Functions',
-  //     data: [{text: 'ENG', value :'ENG'} ,
-  //       {text: 'TECH', value :'TECH'},
-  //       {text: 'Test', value :'Test'}],
-  //     control: new FormControl('ENG') },
-  //   { label: 'Document Type', 
-  //     data: [
-  //       {text: 'Internal', value :'Internal'},
-  //       {text:'Step', value :'Step'}],
-  //     control: new FormControl('Internal') },
-  //   { label: 'Activity Status', 
-  //     data: [{text: 'Not Completed', value :'Not Completed'} ,
-  //       {text: 'Completed', value :'Completed'},
-  //       {text:  'Will Meet', value : 'Will Meet'}],
-  //     control: new FormControl('Not Completed') },
-  //   { label: 'Activity Type', 
-  //     data: [
-  //       {text: '510', value :'510'},
-  //       {text: '560', value :'560'}],
-  //     control: new FormControl('510') },
-  //   { label: 'Finish By', 
-  //     data: [{text: 'Late Finish', value :'Late Finish'} ,
-  //       {text: 'TECH', value :'TECH'},
-  //       {text: 'Test', value :'Test'}],
-  //     control: new FormControl('Late Finish') },
-  //   { label: 'Date Type',
-  //     data: [
-  //       {text: 'Business', value :'Business'},
-  //       {text: 'EU', value :'EU'}],
-  //     control: new FormControl('Business') },
+  //   { label: 'View As',data: [ 'Individual' ,'Project','Summary'], control: new FormControl() },
+  //   { label: 'Functions',data: ['ENG', 'TECH', 'Test'], control: new FormControl() },
+  //   { label: 'Document Type', data: ['Internal', 'Step'], control: new FormControl() },
+  //   { label: 'Activity Status', data: ['Not Completed', 'Completed', 'Will Meet'], control: new FormControl() },
+  //   { label: 'Activity Type', data: ['510', '560'], control: new FormControl() },
+  //   { label: 'Finish By', data: ['Late Finish', 'Early Finish', 'On Time'], control: new FormControl() },
+  //   { label: 'Date Type', data: ['Business', 'EU'], control: new FormControl() },
   // ];
-
-  // filters = [
-  //   { label: 'View As', data: ['Individual', 'Project', 'Summary'], control: new FormControl('Individual') },
-  //   { label: 'Functions', data: ['ENG', 'TECH', 'Test'], control: new FormControl('ENG') },
-  //   { label: 'Document Type', data: ['Internal', 'Step'], control: new FormControl('Internal') },
-  //   { label: 'Activity Status', data: ['Not Completed', 'Completed', 'Will Meet'], control: new FormControl('Not Completed') },
-  //   { label: 'Activity Type', data: ['510', '560'], control: new FormControl('510') },
-  //   { label: 'Finish By', data: ['Late Finish', 'Early Finish', 'On Time'], control: new FormControl('Late Finish') },
-  //   { label: 'Date Type', data: ['Business', 'EU'], control: new FormControl('Business') }
-  // ];
-
-  // filters = [
-  //   {
-  //     label: 'View As',
-  //     data: [
-  //       { text: 'Individual', value: 'Individual' },
-  //       { text: 'Project', value: 'Project' },
-  //       { text: 'Summary', value: 'Summary' }
-  //     ]
-  //   },
-  //   {
-  //     label: 'Functions',
-  //     data: [
-  //       { text: 'ENG', value: 'ENG' },
-  //       { text: 'TECH', value: 'TECH' },
-  //       { text: 'Test', value: 'Test' }
-  //     ]
-  //   },
-  //   {
-  //     label: 'Document Type',
-  //     data: [
-  //       { text: 'Internal', value: 'Internal' },
-  //       { text: 'Step', value: 'Step' }
-  //     ]
-  //   },
-  //   {
-  //     label: 'Activity Status',
-  //     data: [
-  //       { text: 'Not Completed', value: 'Not Completed' },
-  //       { text: 'Completed', value: 'Completed' },
-  //       { text: 'Will Meet', value: 'Will Meet' }
-  //     ]
-  //   },
-  //   {
-  //     label: 'Activity Type',
-  //     data: [
-  //       { text: '510', value: '510' },
-  //       { text: '560', value: '560' }
-  //     ]
-  //   },
-  //   {
-  //     label: 'Finish By',
-  //     data: [
-  //       { text: 'Late Finish', value: 'Late Finish' },
-  //       { text: 'Early Finish', value: 'Early Finish' },
-  //       { text: 'On Time', value: 'On Time' }
-  //     ]
-  //   },
-  //   {
-  //     label: 'Date Type',
-  //     data: [
-  //       { text: 'Business', value: 'Business' },
-  //       { text: 'EU', value: 'EU' }
-  //     ]
-  //   }
-  // ].map(filter => ({
-  //   ...filter,
-  //   control: new FormControl(filter.data[0].value) // Dynamically set first value
-  // }));
-
-  filters = [
-    { label: 'View As',data: [ 'Individual' ,'Project','Summary'], control: new FormControl() },
-    { label: 'Functions',data: ['ENG', 'TECH', 'Test'], control: new FormControl() },
-    { label: 'Document Type', data: ['Internal', 'Step'], control: new FormControl() },
-    { label: 'Activity Status', data: ['Not Completed', 'Completed', 'Will Meet'], control: new FormControl() },
-    { label: 'Activity Type', data: ['510', '560'], control: new FormControl() },
-    { label: 'Finish By', data: ['Late Finish', 'Early Finish', 'On Time'], control: new FormControl() },
-    { label: 'Date Type', data: ['Business', 'EU'], control: new FormControl() },
-  ];
   dropdownControl = new FormControl(); 
 
   buttons = [
@@ -155,8 +111,17 @@ export class FilterActivitiesComponent implements OnInit {
   activeTab: string = 'total';
 
   ngOnInit(): void {
-    this.dropdownControl = new FormControl(this.filters[0].data);
+      console.log('FILTERS:', this.filters);
+  this.filters.forEach(f => {
+    if (!f.control || !f.data?.length) {
+      console.warn(`Missing setup for filter:`, f.label);
+    }
+  });
    }
+
+   onFilterChange(value: any, label: string) {
+    console.log(`${label} changed to`, value);
+  }
 
    setActiveTab(tab: string) {
     this.activeTab = tab;
@@ -172,6 +137,8 @@ togglePanel() {
 clearFilters(){
 
 }
-
+onSelectionChnage(value:any,dropdownName:string){
+  console.log('ssssssssssssssss')
+}
 
 }

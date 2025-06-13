@@ -58,6 +58,8 @@ onLogin() {
           this.authService.setCurrentUser(user, rememberMe);
           this.invalidCredentials = false;
           this.router.navigate(['/dashboard']);
+           this.loading = false;  
+
         } else {
           this.invalidCredentials = true;
         }

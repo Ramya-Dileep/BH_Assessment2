@@ -33,6 +33,7 @@ export class ActivitiesTabulardataComponent {
     next: data => {
       this.ispoData = data;
       this.filteredProjects = [...this.ispoData];
+       this.loading = false;
     },
     error: err => {
       console.error('Error loading data', err);

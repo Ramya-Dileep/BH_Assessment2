@@ -18,8 +18,35 @@
 
   <div class="profile" (click)="toggleDropdown()" tabindex="0" (blur)="DropdownClose()">
   <img src="assets/Logos/Avatar-user.jpg" class="avatar" alt="User Avatar" />
+
+  
   <div class="dropdown" *ngIf="isDropdownOpen">
-    <button class="logout-btn" (click)="onLogout($event)">Logout</button>
+    
+    <!-- Avatar inside dropdown -->
+    <img src="assets/Logos/Avatar-user.jpg" class="dropdown-avatar" alt="User Avatar" />
+    
+    <!-- Admin info -->
+    <div class="admin-info">
+      <div class="admin-name">{{adminName}}</div>
+      <div class="admin-email">{{adminEmail}}</div>
+    </div>
+
+    <div class="divider"></div>
+
+   <button class="dropdown-btn">
+  <span class="material-icons">group</span>
+  <span class="label">Change Dashboard</span>
+  <span class="chevron material-icons">chevron_right</span>
+</button>
+
+    <div class="divider"></div>
+
+    <button class="logout-btn" (click)="onLogout($event)">
+    <span class="material-icons">power_settings_new</span>
+    <span class="label">Logout</span>
+  </button>
+
+
   </div>
 </div>
 

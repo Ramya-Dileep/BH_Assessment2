@@ -19,6 +19,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   avatarUrl: string = 'assets/images/default-avatar.png';
   dropdownOpen = false;
   isDropdownOpen = false; 
+  adminName = "admin";
+  adminEmail = "admin431@gmail.com";
 
   private subscription = new Subscription();
 
@@ -34,12 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ];
 
   ngOnInit(): void {
-    // const savedUser = localStorage.getItem('LoggedUser');
-    // if (savedUser) {
-    //   const user: User = JSON.parse(savedUser);
-    //   this.authService.setCurrentUser(user);
-    // }
-
+ 
     this.subscription = this.authService.currentUser$.subscribe((user: User | null) => {
       if (user) {
         this.userName = user.userName;
@@ -58,10 +55,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   this.isDropdownOpen = !this.isDropdownOpen;
 }
 
-//   onlogout(): void {
-//   this.authService.clearUser();
-//   this.router.navigate(['/login']);
-// }
+onChangeDashboard(){}
 
 onLogout(event: MouseEvent) {
   event.stopPropagation(); // Prevent blur from closing the dropdown before click

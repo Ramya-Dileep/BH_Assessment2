@@ -5,3 +5,15 @@
   font-weight: normal;
   font-style: normal;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.k-pager-wrap .k-button-flat-primary {
+  color: green !important;
+  border-color: green !important;
+  background-color: transparent !important;
+}
+
+

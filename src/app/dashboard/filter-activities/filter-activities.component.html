@@ -25,6 +25,7 @@
   <div *ngFor="let filter of filters" class="dropdown-item">
     <label class="dropdown-label">{{ filter.label }}</label>
     <kendo-dropdownlist
+      
       [data]="filter.data"
       [formControl]="filter.control"
       [textField]="'text'"
@@ -36,40 +37,6 @@
     </kendo-dropdownlist>
   </div>
 </div>
-
-
-        <!-- <div class="dropdown-wrapper">
-            @for (filter of filters; track $index) {
-              <div class="dropdown-item">
-                <label class="dropdown-label">{{ filter.label }}</label>
-                <kendo-dropdownlist
-                  [data]="filter.data"
-                  [formControl]="filter.control"
-                  [textField]="'text'"
-                  [valueField]="'value'"
-                    (valueChange)="onFilterChange($event, filter.label)"
-                  >
-                </kendo-dropdownlist>
-              </div>
-            }
-          </div> -->
-
-
-
-        <!-- <div class="dropdown-wrapper">
-            @for (filter of filters; track $index) {
-    <div class="dropdown-item">
-      <label class="dropdown-label">{{ filter.label }}</label>
-      <kendo-dropdownlist
-        [data]="filter.data"
-        [formControl]="filter.control"
-        [textField]="'text'"
-        [valueField]="'value'">
-      </kendo-dropdownlist>
-    </div>
-  }
-          </div> -->
-
           
           <div class="filterbtn">
             @for (btn of buttons; track $index){

@@ -28,10 +28,14 @@
   } @else {
 
   <kendo-grid
-    [data]="filteredProjects"
-    [height]="isFullscreen ? 900 : 400"
-    scrollable="scrollable"
-    [sortable]="true"           
+  [data]="pagedData"
+  [height]="isFullscreen ? 900 : 350"
+  scrollable="scrollable"
+  [sortable]="true"
+  [pageable]="true"
+  [skip]="skip"
+  [pageSize]="pageSize"
+  (pageChange)="onPageChange($event)"   
     
   >
     <kendo-grid-column field="name" title="Name" [width]="150"></kendo-grid-column>

@@ -37,6 +37,7 @@ export class MaincontentHeaderComponent implements OnInit {
   percentage = 71;
   activeTab: string = 'ispo';
   form!: FormGroup;
+   hasReassignRequests = true;
 
   tabButtons = [
     { label: 'ISPO', value: 'ispo' },

@@ -3,17 +3,26 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
+// export interface Project {
+//   projectId: string;
+//   contractName: string;
+//   projectStatus: string;
+//   isMyContracts: string;
+//   isFavourite: string;
+//   trains: {
+//     trainId: string;
+//     trainName: string;
+//     jobNumber: string[];
+//   }[];
+// }
+
 export interface Project {
-  projectId: string;
-  contractName: string;
-  projectStatus: string;
-  isMyContracts: string;
+  id: string;
+  text: string;
+  isMyContract: string;
   isFavourite: string;
-  trains: {
-    trainId: string;
-    trainName: string;
-    jobNumber: string[];
-  }[];
+  
+  children: Project[]; // recursive children (trains or jobs)
 }
 
 @Injectable({
@@ -35,7 +44,7 @@ export class ProjectTreeService {
     }
   
     getMyContracts(): Observable<Project[]> {
-      return of(this.projects.filter(p => p.isMyContracts === 'True'));
+      return of(this.projects.filter(p => p.isMyContract === 'True'));
     }
   
     getFavourites(): Observable<Project[]> {

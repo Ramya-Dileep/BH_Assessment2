@@ -1,7 +1,8 @@
 <div class="tabulardiv">
   <div class="header">
     <span>Activities</span>
-    <span class="results-summary">Results : {{ispoData.length}}</span>
+    <span class="results-summary">Results: {{ filteredProjects.length }} Activities
+</span>
     <div class="nav-actions">
       <input
         class="search-input"
@@ -41,10 +42,10 @@
     <kendo-grid-column field="name" title="Name" [width]="150"></kendo-grid-column>
     <kendo-grid-column field="username" title="Username" [width]="100"></kendo-grid-column>
     <kendo-grid-column field="email" title="Email" [width]="200"></kendo-grid-column>
-    <kendo-grid-column field="website" title="Website" [width]="150"></kendo-grid-column>
-    <kendo-grid-column field="address.street" title="Street" [width]="120"></kendo-grid-column>
-    <kendo-grid-column field="address.city" title="City" [width]="120"></kendo-grid-column>
-    <kendo-grid-column field="address.zipcode" title="Zipcode" [width]="120"></kendo-grid-column>
+    <kendo-grid-column field="contract" title="Contract" [width]="150"></kendo-grid-column>
+    <kendo-grid-column field="street" title="Street" [width]="120"></kendo-grid-column>
+    <kendo-grid-column field="city" title="City" [width]="120"></kendo-grid-column>
+    <kendo-grid-column field="zipcode" title="Zipcode" [width]="120"></kendo-grid-column>
   </kendo-grid>
 
 }

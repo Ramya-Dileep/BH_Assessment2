@@ -1,166 +1,190 @@
 [
   {
-    "projectId": "p1",
-    "contractName": "Phoenix GTG",
-    "projectStatus": "Active",
+    "id": "p1",
+    "text": "Phoenix GTG",
     "isMyContracts": "True",
     "isFavourite": "False",
-    "trains": [
+    "children": [
       {
-        "trainId": "t1",
-        "trainName": "Phoenix-1",
-        "jobNumber": ["PHX-1001", "PHX-1002"]
+        "id": "t1",
+        "text": "Phoenix-1",
+        "children": [
+          { "id": "PHX-1001", "text": "PHX-1001" },
+          { "id": "PHX-1002", "text": "PHX-1002" }
+        ]
       },
       {
-        "trainId": "t2",
-        "trainName": "Phoenix-2",
-        "jobNumber": ["PHX-1003"]
+        "id": "t2",
+        "text": "Phoenix-2",
+        "children": [
+          { "id": "PHX-1003", "text": "PHX-1003" }
+        ]
       }
     ]
   },
   {
-    "projectId": "p2",
-    "contractName": "Orion Gas Plant",
-    "projectStatus": "Active",
+    "id": "p2",
+    "text": "Orion Gas Plant",
     "isMyContracts": "False",
     "isFavourite": "True",
-    "trains": [
+    "children": [
       {
-        "trainId": "t3",
-        "trainName": "Orion-A",
-        "jobNumber": ["ORN-2001"]
+        "id": "t3",
+        "text": "Orion-A",
+        "children": [
+          { "id": "ORN-2001", "text": "ORN-2001" }
+        ]
       },
       {
-        "trainId": "t4",
-        "trainName": "Orion-B",
-        "jobNumber": ["ORN-2002"]
+        "id": "t4",
+        "text": "Orion-B",
+        "children": [
+          { "id": "ORN-2002", "text": "ORN-2002" }
+        ]
       }
     ]
   },
   {
-    "projectId": "p3",
-    "contractName": "Nova Hydrogen GTG",
-    "projectStatus": "Active",
+    "id": "p3",
+    "text": "Nova Hydrogen GTG",
     "isMyContracts": "True",
     "isFavourite": "True",
-    "trains": [
+    "children": [
       {
-        "trainId": "t5",
-        "trainName": "Nova-T1",
-        "jobNumber": ["NVA-3001", "NVA-3002"]
+        "id": "t5",
+        "text": "Nova-T1",
+        "children": [
+          { "id": "NVA-3001", "text": "NVA-3001" },
+          { "id": "NVA-3002", "text": "NVA-3002" }
+        ]
       }
     ]
   },
   {
-    "projectId": "p4",
-    "contractName": "Vega LNG Project",
-    "projectStatus": "Completed",
+    "id": "p4",
+    "text": "Vega LNG Project",
     "isMyContracts": "False",
     "isFavourite": "False",
-    "trains": [
+    "children": [
       {
-        "trainId": "t6",
-        "trainName": "Vega-1",
-        "jobNumber": ["VGA-4001"]
+        "id": "t6",
+        "text": "Vega-1",
+        "children": [
+          { "id": "VGA-4001", "text": "VGA-4001" }
+        ]
       },
       {
-        "trainId": "t7",
-        "trainName": "Vega-2",
-        "jobNumber": ["VGA-4002", "VGA-4003"]
+        "id": "t7",
+        "text": "Vega-2",
+        "children": [
+          { "id": "VGA-4002", "text": "VGA-4002" },
+          { "id": "VGA-4003", "text": "VGA-4003" }
+        ]
       }
     ]
   },
   {
-    "projectId": "p5",
-    "contractName": "Solar Fusion Plant",
-    "projectStatus": "Active",
+    "id": "p5",
+    "text": "Solar Fusion Plant",
     "isMyContracts": "True",
     "isFavourite": "True",
-    "trains": [
+    "children": [
       {
-        "trainId": "t8",
-        "trainName": "Solar-A",
-        "jobNumber": ["SOL-5001"]
+        "id": "t8",
+        "text": "Solar-A",
+        "children": [
+          { "id": "SOL-5001", "text": "SOL-5001" }
+        ]
       }
     ]
   },
   {
-    "projectId": "p6",
-    "contractName": "Lunar Refinery",
-    "projectStatus": "On Hold",
+    "id": "p6",
+    "text": "Lunar Refinery",
     "isMyContracts": "False",
     "isFavourite": "False",
-    "trains": [
+    "children": [
       {
-        "trainId": "t9",
-        "trainName": "Lunar-1",
-        "jobNumber": ["LUN-6001"]
+        "id": "t9",
+        "text": "Lunar-1",
+        "children": [
+          { "id": "LUN-6001", "text": "LUN-6001" }
+        ]
       },
       {
-        "trainId": "t10",
-        "trainName": "Lunar-2",
-        "jobNumber": ["LUN-6002"]
+        "id": "t10",
+        "text": "Lunar-2",
+        "children": [
+          { "id": "LUN-6002", "text": "LUN-6002" }
+        ]
       }
     ]
   },
   {
-    "projectId": "p7",
-    "contractName": "Mars Power Station",
-    "projectStatus": "Active",
+    "id": "p7",
+    "text": "Mars Power Station",
     "isMyContracts": "True",
     "isFavourite": "False",
-    "trains": [
+    "children": [
       {
-        "trainId": "t11",
-        "trainName": "Mars-T1",
-        "jobNumber": ["MRS-7001", "MRS-7002"]
+        "id": "t11",
+        "text": "Mars-T1",
+        "children": [
+          { "id": "MRS-7001", "text": "MRS-7001" },
+          { "id": "MRS-7002", "text": "MRS-7002" }
+        ]
       }
     ]
   },
   {
-    "projectId": "p8",
-    "contractName": "Jupiter Compression Unit",
-    "projectStatus": "Completed",
+    "id": "p8",
+    "text": "Jupiter Compression Unit",
     "isMyContracts": "False",
     "isFavourite": "True",
-    "trains": [
+    "children": [
       {
-        "trainId": "t12",
-        "trainName": "Jupiter-C1",
-        "jobNumber": ["JPT-8001"]
+        "id": "t12",
+        "text": "Jupiter-C1",
+        "children": [
+          { "id": "JPT-8001", "text": "JPT-8001" }
+        ]
       }
     ]
   },
   {
-    "projectId": "p9",
-    "contractName": "Titan Recovery Facility",
-    "projectStatus": "Active",
+    "id": "p9",
+    "text": "Titan Recovery Facility",
     "isMyContracts": "True",
     "isFavourite": "True",
-    "trains": [
+    "children": [
       {
-        "trainId": "t13",
-        "trainName": "Titan-R1",
-        "jobNumber": ["TTN-9001"]
+        "id": "t13",
+        "text": "Titan-R1",
+        "children": [
+          { "id": "TTN-9001", "text": "TTN-9001" }
+        ]
       },
       {
-        "trainId": "t14",
-        "trainName": "Titan-R2",
-        "jobNumber": ["TTN-9002"]
+        "id": "t14",
+        "text": "Titan-R2",
+        "children": [
+          { "id": "TTN-9002", "text": "TTN-9002" }
+        ]
       }
     ]
   },
   {
-    "projectId": "p10",
-    "contractName": "Neptune Carbon Capture",
-    "projectStatus": "On Hold",
+    "id": "p10",
+    "text": "Neptune Carbon Capture",
     "isMyContracts": "False",
     "isFavourite": "False",
-    "trains": [
+    "children": [
       {
-        "trainId": "t15",
-        "trainName": "Neptune-1",
-        "jobNumber": ["NPT-10001"]
+        "id": "t15",
+        "text": "Neptune-1",
+        "children": [
+          { "id": "NPT-10001", "text": "NPT-10001" }
+        ]
       }
     ]
   }

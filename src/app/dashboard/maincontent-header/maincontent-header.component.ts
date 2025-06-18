@@ -29,6 +29,7 @@ import { ActivitiesTabulardataComponent } from '../activities-tabulardata/activi
 })
 export class MaincontentHeaderComponent implements OnInit {
   @Input() ProjectName: string = 'IEP';
+  @Input() SelectedContracts :string[] =[];
   @Input() fullscreenMode: boolean = false;
   @Output() fullscreenToggled = new EventEmitter<boolean>();
 

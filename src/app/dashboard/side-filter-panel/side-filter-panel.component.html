@@ -52,9 +52,53 @@
         Results: {{ filteredProjects.length }} contract{{ filteredProjects.length !== 1 ? 's' : '' }}
       </div>
 
-      <div *ngIf="noDataFound" class="no-data-message">
+      <div *ngIf="filteredProjects.length === 0" class="no-data-message">
         No data found!
       </div>
+
+         <!-- <kendo-treeview
+    [nodes]="data"
+    [kendoTreeViewCheckable]="{ mode: 'multiple', checkChildren: true }"
+    textField="text"
+    [children]="children"
+    [checkedKeys]="checkedkeys"
+    (checkedKeysChange)="onCheckedKeysChange($event)"
+    kendoTreeViewExpandable
+    [hasChildren]="hasChildren"
+    [checkBy]="'id'"
+    [expandBy]="'id'"
+    [loadOnDemand]="false"
+>
+</kendo-treeview> -->
+
+       <kendo-treeview
+    [nodes]="filteredProjects"
+    [kendoTreeViewCheckable]="{ mode: 'multiple', checkChildren: true }"
+    textField="text"
+    [children]="children"
+    [(checkedKeys)]="selectedJobIds"
+    (checkedKeysChange)="onCheckedKeysChange($event)"
+    kendoTreeViewExpandable
+    [hasChildren]="hasChildren"
+    [checkBy]="'id'"
+    [expandBy]="'id'"
+    [loadOnDemand]="false"
+>
+</kendo-treeview>
+
+ <!-- <kendo-treeview
+  [nodes]="data"
+  textField="text"
+  [children]="children"
+  [isExpanded]="isExpanded"
+  [checkedKeys]="selectedJobIds"
+  (checkedKeysChange)="onCheckedKeysChange($event)"
+  [kendoTreeViewCheckable]="{ mode: 'multiple', checkChildren: true }"
+  [hasChildren]="hasChildren"
+  kendoTreeViewExpandable
+  kendoTreeViewCheckable="true"
+  kendoTreeViewSelectable>
+</kendo-treeview> -->
 
       <!-- @for (project of filteredProjects; track project.projectName) {
         <div class="project-node">

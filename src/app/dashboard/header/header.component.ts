@@ -19,8 +19,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   avatarUrl: string = 'assets/images/default-avatar.png';
   dropdownOpen = false;
   isDropdownOpen = false; 
-  adminName = "admin";
-  adminEmail = "admin431@gmail.com";
+  // adminName = "admin";
+  // adminEmail = "admin431@gmail.com";
+  adminName: string | null = null;
+  adminEmail:  string | null = null;
 
   private subscription = new Subscription();
 
@@ -40,6 +42,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscription = this.authService.currentUser$.subscribe((user: User | null) => {
       if (user) {
         this.userName = user.userName;
+        this.adminEmail = user.email || this.adminEmail;
         this.avatarUrl = user.avatar || this.avatarUrl;
       }
     });

@@ -54,7 +54,7 @@ onLogin() {
     this.loginService.login(userName, password).subscribe({
       next: isValid => {
         if (isValid) {
-          const user: User = { userName };
+          const user: User = {userName, email: userName + '@example.com' }; 
           this.authService.setCurrentUser(user, rememberMe);
           this.invalidCredentials = false;
           this.router.navigate(['/dashboard']);
@@ -110,43 +110,6 @@ onLogin() {
 //   }
 // }
 
-
-// onLogin() {
-// console.log("login click")
-// if (this.loginForm.valid) {
-//       const { userName, password, rememberMe } = this.loginForm.value;
- 
-//       this.loginService.login(userName, password).subscribe(isValid => {
-//         if (isValid) {
-//           const user: User = { userName };
-//           this.authService.setCurrentUser(user, rememberMe);
-//            this.invalidCredentials = false;
-//           this.router.navigate(['/dashboard']);
-//         } else {
-//            this.invalidCredentials = true;
-//         }
-//       });
-//     } else {     
-//      console.log('Form is invalid');
-//     }
-//   }
-
-  // if (this.loginForm.valid) {
-  //   console.log("login valid")
-  //   const userName = this.loginForm.get('userName')?.value;
-  //   const rememberMe = this.loginForm.get('rememberMe')?.value;
-
-  //     const user: User = { userName }; // Or whatever shape your `User` model has
-
-  //     this.authService.setCurrentUser(user, rememberMe);
-
-
-  //   this.router.navigate(['/dashboard']).then(success => {
-  //     console.log('Navigation success?', success);
-  //   });
-  // } else {
-  //   console.log('Form is invalid');
-  // }
 
 
 

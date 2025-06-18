@@ -34,14 +34,24 @@
       </button>
     </div>
 
-    <div class="searchjob">
+    <!-- <div class="searchjob">
       <input
         type="text"
         [formControl]="searchControl"
         placeholder="Search project or job number"
         class="search-input"
       />
-    </div>
+    </div> -->
+
+     <div class="search-box">
+       <input
+        type="text"
+        [formControl]="searchControl"
+        placeholder="Search project or job number"
+        class="search-input"
+      />
+        <span class="material-symbols-outlined search-icon">search</span>
+      </div>
 
     <div>
       <button class="advanceSearch">&gt; Advanced Search</button>
@@ -84,83 +94,18 @@
     [expandBy]="'id'"
     [loadOnDemand]="false"
 >
+<ng-template kendoTreeViewNodeTemplate let-dataItem let-hasChildren="hasChildren">
+    <span>
+      <!-- Add star only for parent nodes -->
+      
+      {{ dataItem.text }}
+      <span *ngIf="dataItem.isFavourite === 'True'" class="material-symbols-outlined star-icon">
+        star
+      </span>
+    </span>
+  </ng-template>
 </kendo-treeview>
 
- <!-- <kendo-treeview
-  [nodes]="data"
-  textField="text"
-  [children]="children"
-  [isExpanded]="isExpanded"
-  [checkedKeys]="selectedJobIds"
-  (checkedKeysChange)="onCheckedKeysChange($event)"
-  [kendoTreeViewCheckable]="{ mode: 'multiple', checkChildren: true }"
-  [hasChildren]="hasChildren"
-  kendoTreeViewExpandable
-  kendoTreeViewCheckable="true"
-  kendoTreeViewSelectable>
-</kendo-treeview> -->
-
-      <!-- @for (project of filteredProjects; track project.projectName) {
-        <div class="project-node">
-          <div class="project-header">            
-            <button  class="material-symbols-outlined" (click)="toggleProject(project.projectName)">
-                {{ isProjectExpanded(project.projectName) ? 'arrow_drop_down' : 'arrow_right' }}
-            </button>
-            <label class="project-label">
-              <input
-                type="checkbox"
-                [checked]="isProjectSelected(project)"
-                (change)="toggleProjectSelection(project)"
-              />
-              <span class="projectName">{{ project.projectName }}</span>
-              @if (project.meta?.isFavourite){
-              <span class="material-symbols-outlined">
-                star_rate
-                </span>
-              }
-            </label>
-          </div>
-
-          @if (isProjectExpanded(project.projectName)) {
-            <div class="train-list">
-              @for (train of project.trains; track train.trainName) {
-                <div class="train-node">
-                  <div class="train-header">
-                      <button class="material-symbols-outlined" (click)="toggleTrainExpand(train.trainName)">
-                        {{ isTrainExpanded(train.trainName) ?  'arrow_drop_down' : 'arrow_right' }}
-                    </button>
-                    <label>
-                      <input
-                        type="checkbox"
-                        [checked]="isTrainSelected(train.jobNumbers)"
-                        (change)="toggleTrainSelection(train.trainName, train.jobNumbers)"
-                      />
-                      {{ train.trainName }}
-                    </label>
-                  </div>
-
-                  @if (isTrainExpanded(train.trainName)) {
-                    <ul class="job-list">
-                      @for (job of train.jobNumbers; track job) {
-                        <li class="job-node">
-                          <label>
-                            <input
-                              type="checkbox"
-                              [checked]="selectedJobs.has(job)"
-                              (change)="toggleJob(job)"
-                            />
-                            {{ job }}
-                          </label>
-                        </li>
-                      }
-                    </ul>
-                  }
-                </div>
-              }
-            </div>
-          }
-        </div>
-      } -->
     </div>
   }
 </div>

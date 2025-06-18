@@ -42,12 +42,12 @@ export class MaincontentHeaderComponent implements OnInit {
 
   tabButtons = [
     { label: 'ISPO', value: 'ispo' },
-    { label: 'VDR', value: 'vdr' },
-    { label: 'VDR Revision', value: 'vdrrev' },
-    { label: 'VDR Finalization', value: 'vdrfinal' },
-    { label: 'OTD Trends', value: 'otd' },
-    { label: 'Engineering Productivity', value: 'engprod' },
-    { label: 'Technical Alignment', value: 'techalign' }
+    { label: 'VDR', value: 'VDR' },
+    { label: 'VDR Revision', value: 'VDR Revision' },
+    { label: 'VDR Finalization', value: 'VDR Finalization' },
+    { label: 'OTD Trends', value: 'OTD Trends' },
+    { label: 'Engineering Productivity', value: 'Engineering Productivity' },
+    { label: 'Technical Alignment', value: 'Technical Alignment' }
   ];
 
   constructor(private fb: FormBuilder) {}

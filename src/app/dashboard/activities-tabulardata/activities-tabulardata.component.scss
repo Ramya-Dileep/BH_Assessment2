@@ -50,23 +50,55 @@
                 font-weight: bold;
                 transition: background 0.2s;
             }
-            .search-input {
-                flex: 1; /* auto-grow */
-                padding: 6px 10px;
-                align-items: center;
-                margin-bottom: 10px;
-                margin-left: 20px;
-                font-size: 14px;
-                margin-top: 10px;
-                border-radius: 16px;
-                border: 1px solid #ccc;
-                transition: border-color 0.2s ease;
-                height: 30px;
-                &:focus {
-                  border-color: #999; 
-                  box-shadow: 0 0 0 1px #ccc;
-                }
+            // .search-input {
+            //     flex: 1; /* auto-grow */
+            //     padding: 6px 10px;
+            //     align-items: center;
+            //     margin-bottom: 10px;
+            //     margin-left: 20px;
+            //     font-size: 14px;
+            //     margin-top: 10px;
+            //     border-radius: 16px;
+            //     border: 1px solid #ccc;
+            //     transition: border-color 0.2s ease;
+            //     height: 30px;
+            //     &:focus {
+            //       border-color: #999; 
+            //       box-shadow: 0 0 0 1px #ccc;
+            //     }
+            //   }
+            .search-box {
+              display: flex;
+              align-items: center;
+              border: 1px solid #ccc;
+              border-radius: 16px;
+              padding: 0 10px;
+              height: 34px;
+              max-width: 300px;
+              background-color: #fff;
+
+              &:focus-within {
+                border-color: #999;
+                box-shadow: 0 0 0 1px #ccc;
               }
+            }
+
+          .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            padding: 6px 8px;
+            background: transparent;
+          }
+
+          .search-icon {
+            color: black;
+            font-size: 20px;
+            cursor: default;
+          }
+
+
              .icon {
               font-size: 24px;
               cursor: pointer;

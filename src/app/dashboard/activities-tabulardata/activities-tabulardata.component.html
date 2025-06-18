@@ -4,12 +4,24 @@
     <span class="results-summary">Results: {{ filteredProjects.length }} Activities
 </span>
     <div class="nav-actions">
-      <input
+      <!-- <input
         class="search-input"
         type="text"
         [formControl]="searchControl"
         placeholder="Search in all columns"
-      />
+      /> -->
+
+      <div class="search-box">
+        <input
+          type="text"
+          class="search-input"
+          [formControl]="searchControl"
+          placeholder="Search in all columns"
+        />
+        <span class="material-symbols-outlined search-icon">search</span>
+      </div>
+
+
 
       <span class="material-symbols-outlined">settings</span>
 

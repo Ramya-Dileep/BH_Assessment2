@@ -41,6 +41,14 @@
       border: none;
       cursor: pointer;
     }
+
+    .material-symbols-outlined {
+      justify-content: center;
+      cursor: pointer;
+      font-size: 20px; 
+      width: 30px;     
+      height: 30px;
+    }
   }
 
   .k-panel-content {
@@ -159,6 +167,7 @@
   background-color: #e6f4ea !important; /* custom green */
   color: #02a783 !important;
 }
+
 
 
 }

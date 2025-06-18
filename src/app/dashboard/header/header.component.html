@@ -17,13 +17,13 @@
 
 
   <div class="profile" (click)="toggleDropdown()" tabindex="0" (blur)="DropdownClose()">
-  <img src="assets/Logos/Avatar-user.jpg" class="avatar" alt="User Avatar" />
+  <img [src]="avatarUrl" class="avatar" alt="User Avatar" />
 
   
   <div class="dropdown" *ngIf="isDropdownOpen">
     
     <!-- Avatar inside dropdown -->
-    <img src="assets/Logos/Avatar-user.jpg" class="dropdown-avatar" alt="User Avatar" />
+    <img [src]="avatarUrl" class="dropdown-avatar" alt="User Avatar" />
     
     <!-- Admin info -->
     <div class="admin-info">

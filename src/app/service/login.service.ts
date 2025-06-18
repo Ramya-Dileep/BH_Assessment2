@@ -1,6 +1,7 @@
   import { Injectable } from '@angular/core';
   import { Observable, of } from 'rxjs';
   import { delay } from 'rxjs/operators';
+import { User } from '../models/user.model';
   
   @Injectable({
     providedIn: 'root'
@@ -25,10 +26,23 @@
     //   return of(isValid).pipe(delay(1000));
     // }
 
-  login(userName: string, password: string): Observable<boolean> {
-  const isValid = this.validCredentials.some(
+  // login.service.ts
+login(userName: string, password: string): Observable<User | null> {
+  const matchedUser = this.validCredentials.find(
     user => user.userName === userName && user.password === password
   );
-  return of(isValid).pipe(delay(1000));
+
+  if (matchedUser) {
+    // Add avatar per user or a default
+    const user: User = {
+      userName: matchedUser.userName,
+      email: matchedUser.userName + '@example.com',
+      avatar: `assets/Logos/${matchedUser.userName}.jpg`
+    };
+    return of(user).pipe(delay(1000));
+  }
+
+  return of(null).pipe(delay(1000));
 }
+
   }

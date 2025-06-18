@@ -52,18 +52,15 @@ onLogin() {
     this.loading = true;  // start spinner or disable button
 
     this.loginService.login(userName, password).subscribe({
-      next: isValid => {
-        if (isValid) {
-          const user: User = {userName, email: userName + '@example.com' }; 
-          this.authService.setCurrentUser(user, rememberMe);
-          this.invalidCredentials = false;
-          this.router.navigate(['/dashboard']);
-           this.loading = false;  
-
-        } else {
-          this.invalidCredentials = true;
-        }
-      },
+      next: (user: User | null) => {
+    if (user) {
+      this.authService.setCurrentUser(user, rememberMe);
+      this.invalidCredentials = false;
+      this.router.navigate(['/dashboard']);
+    } else {
+      this.invalidCredentials = true;
+    }
+  },
       error: err => {
         console.error('Login failed:', err);
         this.invalidCredentials = true;

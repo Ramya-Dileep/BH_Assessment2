@@ -32,7 +32,11 @@ export interface Project {
 
 export class ProjectTreeService {
 
-  private readonly dataUrl = 'assets/JSON/projecttreedata.json';
+
+  // commented for backend implementation
+  // private readonly dataUrl = 'assets/JSON/projecttreedata.json';
+
+   private readonly dataUrl = 'http://localhost:5000/api/projects';
 
   private projects : Project[] =[];
    

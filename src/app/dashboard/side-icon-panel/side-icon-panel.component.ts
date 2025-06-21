@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import {SidebarService} from '../../service/sidebar.service'
 
 @Component({
   selector: 'app-side-icon-panel',
@@ -22,6 +23,14 @@ export class SideIconPanelComponent {
 
   ];
   selectedId : number = 2;
-i: any;
+  i: any;
+
+  constructor(private sidebarService:SidebarService){}
+
+ expandSidebar(i : any): void {
+  if(i=== 0){
+    this.sidebarService.setSidebarState(false); // Expand
+  }
+  }
 
 }

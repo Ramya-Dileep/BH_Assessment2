@@ -27,6 +27,7 @@
     "@progress/kendo-angular-grid": "^19.1.1",
     "@progress/kendo-angular-indicators": "^19.1.1",
     "@progress/kendo-angular-l10n": "^19.1.0",
+    "@progress/kendo-angular-tooltip": "^19.1.1",
     "@progress/kendo-angular-treeview": "^19.1.1",
     "@progress/kendo-font-icons": "^4.3.0",
     "@progress/kendo-theme-default": "^11.0.2",

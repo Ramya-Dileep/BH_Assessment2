@@ -3,7 +3,7 @@
   <div class="sidebar-item">
       @for (item of navItems; track item.id; let i = $index) {
     <a [routerLink]="item.routerLink" [ngClass]="{ 'active': i === selectedId }"
-      (click)="selectedId = i">
+      (click)="expandSidebar(i)">
       <span class="material-symbols-outlined">
         {{ item.icon }}
         </span>

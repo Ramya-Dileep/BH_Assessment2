@@ -329,6 +329,11 @@ export class SideFilterPanelComponent implements OnInit, OnDestroy {
 );
   }
 
+  collapseSidebar(): void {
+  this.sidebarService.setSidebarState(true); // Collapse
+}
+
+
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub) => sub.unsubscribe());

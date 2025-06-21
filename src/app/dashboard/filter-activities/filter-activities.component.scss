@@ -157,6 +157,10 @@
   .k-selected {
     color: #02a783;
     font-weight: 500;
+
+    .k-focus{
+        color: #02a783 !important;
+    }
   }
 .k-list-item.k-focus,
 .k-list-item:hover {
@@ -176,5 +180,12 @@
     height: 30px !important;
 
 }
+
+::ng-deep .k-dropdown:hover .k-input {
+  background-color:  #02a783 !important;
+  color: inherit !important;
+  box-shadow: none !important;
+}
+
 
  

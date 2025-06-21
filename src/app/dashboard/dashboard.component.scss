@@ -63,6 +63,8 @@
   transition: width 0.3s ease;
 
   &.collapsed {
-    width: 50px;
+    width: 0px;
+    overflow: hidden;
+    transition: width 0.3s ease;
   }
 }

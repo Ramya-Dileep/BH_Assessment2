@@ -70,7 +70,6 @@
     // width: 90%;
   
     .contract-tab {
-      font-size: 10px;
       font-size: small;
       min-width: 20px;
       color: grey;
@@ -131,7 +130,7 @@
   display: flex;
   align-items: center;
   font-size: 20px; /* adjust icon size */
-  color: black;
+  color: black !important;
 }
 }
 

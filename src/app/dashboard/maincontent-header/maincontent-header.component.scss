@@ -30,40 +30,7 @@
         .label {
           font-size: 12px;
         }
-  
-// .percentage-circle {
-//   .circle {
-//     --percentage: 75;
-//     width: 35px;
-//     height: 35px;
-//     border-radius: 50%;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     background: conic-gradient(#02a783 calc(var(--percentage) * 1%), #e0e0e0 0);
 
-//     position: relative;
-//     padding: 2px; // adds a bit of spacing for thin border effect
-
-//     &::before {
-//       content: '';
-//       position: absolute;
-//       width: 28px; // slightly smaller than container
-//       height: 28px;
-//       border-radius: 50%;
-//       background-color: #ecf0f1; // matches background of inner text
-//       z-index: 1;
-//     }
-
-//     .value {
-//       position: relative;
-//       z-index: 2;
-//       font-size: 12px; // smaller text
-//       color: #000;
-//       font-weight: 500;
-//     }
-//   }
-// }
 
           .percentage-circle {
             .circle {
@@ -164,20 +131,17 @@
   height: 6vh;
   margin-top: 10px;
   margin-bottom: 10px;
-  width: auto;
-  max-width: 70%;
-
-
 }
 
-  .projectText {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    // width: 100%;
-    flex: 1 1 auto;
-    min-width: 0;
-  }
+   .projectText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1000px;     
+  min-width: 0;      
+  flex-shrink: 1;
+}
+
 
 
     .kendo-tab-buttons {
@@ -188,7 +152,7 @@
          flex-shrink: 0;
         height: 5vh;
         margin-bottom: 0;
-        margin-top: 30px;
+        margin-top: 15px;
         border-bottom: 1px solid rgba(128, 128, 128, 0.29);
 
       

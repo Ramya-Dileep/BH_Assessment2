@@ -5,11 +5,12 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { DropDownListModule, DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MultiSelectModule } from '@progress/kendo-angular-dropdowns';
+import {TooltipModule} from '@progress/kendo-angular-tooltip'
 
 @Component({
   selector: 'app-filter-activities',
   standalone: true,
-  imports: [ButtonsModule, CommonModule, ReactiveFormsModule, DropDownsModule, MultiSelectModule],
+  imports: [ButtonsModule, CommonModule, ReactiveFormsModule, DropDownsModule, MultiSelectModule, TooltipModule],
   templateUrl: './filter-activities.component.html',
   styleUrl: './filter-activities.component.scss'
 })
@@ -120,6 +121,14 @@ export class FilterActivitiesComponent implements OnInit {
    onFilterChange(value: any, label: string) {
     console.log(`${label} changed to`, value);
   }
+
+getSelectedText(filter: any): string {
+  const selectedValue = filter.control.value;
+  const selectedItem = filter.data.find((item: any) => item.value === selectedValue);
+  return selectedItem ? selectedItem.text : '';
+}
+
+
 
    setActiveTab(tab: string) {
     this.activeTab = tab;

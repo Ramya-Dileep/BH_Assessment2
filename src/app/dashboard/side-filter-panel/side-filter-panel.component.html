@@ -2,7 +2,9 @@
   <div class="header">
     @if (!isCollapsed) {
       <h6>Filter Contracts</h6>
-      <button class="menu-btn">...</button>
+      <span class="material-symbols-outlined">
+        more_horiz
+        </span>
     }
     <button class="toggle-btn" (click)="toggleSidebar()">
       <mat-icon>{{ isCollapsed ? 'arrow_forward' : 'arrow_back' }}</mat-icon>
@@ -47,14 +49,17 @@
        <input
         type="text"
         [formControl]="searchControl"
-        placeholder="Search project or job number"
+        placeholder="Search job number or contract name"
         class="search-input"
+        [title]="searchControl.value || 'Search job number or contract name'"
       />
         <span class="material-symbols-outlined search-icon">search</span>
       </div>
 
-    <div>
-      <button class="advanceSearch">&gt; Advanced Search</button>
+    <div class="advsearchdiv">
+      <button class="advanceSearch">
+        <span class="material-symbols-outlined">chevron_right</span>
+       Advanced Search</button>
     </div>
 
     <div class="nav-items">
@@ -81,7 +86,20 @@
 >
 </kendo-treeview> -->
 
-       <kendo-treeview
+<div class="select-all-container" *ngIf="filteredProjects.length !== 0">
+  <span class="material-symbols-outlined"  (click)="toggleTreeExpand()">
+{{ isTreeExpanded ? 'expand_more' : 'chevron_right' }}    </span>
+  <input
+    type="checkbox"
+    [checked]="isAllSelected"
+    (change)="toggleSelectAll($event)"
+    id="selectAll"
+  />
+  <label for="selectAll">Current Projects</label>
+</div>
+
+    <kendo-treeview
+    *ngIf="isTreeExpanded"
     [nodes]="filteredProjects"
     [kendoTreeViewCheckable]="{ mode: 'multiple', checkChildren: true }"
     textField="text"
@@ -94,16 +112,27 @@
     [expandBy]="'id'"
     [loadOnDemand]="false"
 >
-<ng-template kendoTreeViewNodeTemplate let-dataItem let-hasChildren="hasChildren">
-    <span>
-      <!-- Add star only for parent nodes -->
-      
+<!-- <ng-template kendoTreeViewNodeTemplate let-dataItem let-hasChildren="hasChildren">
+    <span>      
       {{ dataItem.text }}
       <span *ngIf="dataItem.isFavourite === 'True'" class="material-symbols-outlined star-icon">
         star
       </span>
     </span>
-  </ng-template>
+  </ng-template> -->
+
+  <ng-template kendoTreeViewNodeTemplate let-dataItem let-hasChildren="hasChildren">
+  <span class="tree-node">
+    <span class="node-text">{{ dataItem.text }}</span>
+    <span 
+      *ngIf="dataItem.isFavourite === 'True'" 
+      class="material-symbols-outlined star-icon"
+    >
+      star
+    </span>
+  </span>
+</ng-template>
+
 </kendo-treeview>
 
     </div>

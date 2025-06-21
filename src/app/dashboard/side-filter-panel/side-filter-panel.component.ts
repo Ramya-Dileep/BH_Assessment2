@@ -287,6 +287,7 @@ export class SideFilterPanelComponent implements OnInit, OnDestroy {
   // checkedkeys = [1,6];
 
   noDataFound = false;
+  isAllSelected = false;
 
   private subscriptions: Subscription[] = [];
   projectSubscription: Subscription[] =[];
@@ -333,12 +334,56 @@ export class SideFilterPanelComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
+  // ✅ Collect all job IDs recursively (or project/train/job IDs if needed)
+private collectAllJobIds(nodes: ProjectTreeNode[]): string[] {
+  const ids: string[] = [];
+
+  const traverse = (node: ProjectTreeNode) => {
+    ids.push(node.id); // Add this node's ID
+    if (node.children) {
+      node.children.forEach(child => traverse(child));
+    }
+  };
+
+  nodes.forEach(project => traverse(project));
+  return ids;
+}
+
+toggleSelectAll(event: Event): void {
+  const checked = (event.target as HTMLInputElement).checked;
+
+  if (checked) {
+    // ✅ Select all job IDs
+    const allIds = this.collectAllJobIds(this.filteredProjects);
+    this.selectedJobIds = allIds;
+    this.selectedJobs = new Set(allIds);
+    this.isAllSelected = true;
+  } else {
+    // ❌ Clear all selections
+    this.selectedJobIds = [];
+    this.selectedJobs.clear();
+    this.isAllSelected = false;
+  }
+
+  this.emitSelectedContracts();
+  this.cdr.detectChanges(); // Update UI
+}
+
+
+isTreeExpanded = true; // default expanded
+
+toggleTreeExpand() {
+  this.isTreeExpanded = !this.isTreeExpanded;
+}
+
+
   toggleSidebar(): void {
     this.sidebarService.toggleSidebar();
   }
 
   setTab(tab: 'all' | 'my' | 'fav'): void {
     this.selectedTab = tab;
+    this.isAllSelected = false;
     this.applyTabFilter();
     this.selectFirstProjectAndJobs();
   }
@@ -488,42 +533,6 @@ public selectedKeys: any[] = ["p1"];
     return this.expandedNodes.has(dataItem);
   };
 
-  isChecked = (dataItem: ProjectTreeNode): 'checked' | 'indeterminate' | 'none' => {
-  if (!dataItem.children || dataItem.children.length === 0) {
-    // Leaf node (job)
-    return this.selectedJobs.has(dataItem.id) ? 'checked' : 'none';
-  }
-
-  // Non-leaf node (project or train)
-  const childStatuses = dataItem.children.map(child => this.isChecked(child));
-
-  const allChecked = childStatuses.every(status => status === 'checked');
-  const someChecked = childStatuses.some(status => status === 'checked' || status === 'indeterminate');
-
-  if (allChecked) return 'checked';
-  if (someChecked) return 'indeterminate';
-  return 'none';
-};
-
-
- onCheckedChange(checkedItems: ProjectTreeNode[]): void {
-  this.selectedJobs.clear();
-
-  // Recursive helper to collect all leaf job IDs
-  const collectJobs = (node: ProjectTreeNode) => {
-    if (!node.children || node.children.length === 0) {
-      // Leaf node, treat as job
-      this.selectedJobs.add(node.id);
-    } else {
-      // Recursively collect from children
-      node.children.forEach(child => collectJobs(child));
-    }
-  };
-
-  checkedItems.forEach(item => collectJobs(item));
-
-  this.emitSelectedContracts();
-}
 
 selectedJobIds: string[] = ["0"];
 
@@ -531,6 +540,11 @@ onCheckedKeysChange(checkedKeys: string[]): void {
   this.selectedJobIds = checkedKeys;
   this.selectedJobs = new Set(checkedKeys);
   console.log("*******",this.selectedJobIds )
+
+  // 🧠 Determine if all job IDs are selected
+  const allIds = this.collectAllJobIds(this.filteredProjects);
+  this.isAllSelected = allIds.length > 0 && allIds.every(id => this.selectedJobs.has(id));
+
   this.emitSelectedContracts();
 
 }
@@ -570,8 +584,6 @@ emitSelectedContracts(): void {
 //   this.selectedContractsChange.emit(selectedContracts);
 //   console.log("Emitted contracts:", selectedContracts);
 // }
-
-
 
 
   get contractsCount(): number {

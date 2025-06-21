@@ -38,9 +38,14 @@
 
     @if (!fullscreenMode)
     {
-    <div class="projectName">
+    <!-- <div class="projectName" [title]="ProjectName">
       {{ ProjectName }}
+    </div> -->
+
+    <div class="projectName" [title]="ProjectName">
+      <span class="projectText">{{ ProjectName }}</span>
     </div>
+
 
     <div class="reassign-alert" *ngIf="hasReassignRequests">
       <div class="alert-text">

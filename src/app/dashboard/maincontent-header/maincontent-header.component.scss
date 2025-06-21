@@ -143,17 +143,42 @@
       }
     }
 
-    .projectName{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-weight: bolder;
-        background-color:none;
-        // flex-shrink: 0;
-        height: 6vh;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
+    // .projectName{
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: space-between;
+    //     font-weight: bolder;
+    //     background-color:none;
+    //     // flex-shrink: 0;
+    //     height: 6vh;
+    //     margin-top: 10px;
+    //     margin-bottom: 10px;
+
+    // }
+
+    .projectName {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bolder;
+  height: 6vh;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: auto;
+  max-width: 70%;
+
+
+}
+
+  .projectText {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    // width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
 
     .kendo-tab-buttons {
         display: flex;

@@ -112,17 +112,8 @@
     [expandBy]="'id'"
     [loadOnDemand]="false"
 >
-<!-- <ng-template kendoTreeViewNodeTemplate let-dataItem let-hasChildren="hasChildren">
-    <span>      
-      {{ dataItem.text }}
-      <span *ngIf="dataItem.isFavourite === 'True'" class="material-symbols-outlined star-icon">
-        star
-      </span>
-    </span>
-  </ng-template> -->
-
-  <ng-template kendoTreeViewNodeTemplate let-dataItem let-hasChildren="hasChildren">
-  <span class="tree-node">
+<ng-template kendoTreeViewNodeTemplate let-dataItem let-hasChildren="hasChildren">
+  <div class="tree-node">
     <span class="node-text">{{ dataItem.text }}</span>
     <span 
       *ngIf="dataItem.isFavourite === 'True'" 
@@ -130,8 +121,10 @@
     >
       star
     </span>
-  </span>
+  </div>
 </ng-template>
+
+
 
 </kendo-treeview>
 

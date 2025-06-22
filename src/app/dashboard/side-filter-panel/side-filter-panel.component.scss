@@ -95,6 +95,39 @@
     }
   }
 
+.tree-node {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 8px;
+  box-sizing: border-box;
+  min-height: 24px;
+}
+
+.node-text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.star-icon {
+  font-size: 18px;
+  color: #014D40 !important; /* or your desired color */
+  flex-shrink: 0;
+  margin-left: 190px !important;
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings:
+  'FILL' 1 ,
+  'wght' 700,
+  'GRAD' 0,
+  'opsz' 24 !important;
+
+}
+
+
+
   .select-all-container {
   display: flex;
   align-items: center;

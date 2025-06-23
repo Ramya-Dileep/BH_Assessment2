@@ -60,7 +60,8 @@ form {
 .UserLabel {
   font-size: $font-size-sm;
   // padding-left: 0.2cm;
-  font-weight: bold;
+  font-weight: normal;
+  margin-bottom: 10px ;
   font-family: $font-family;
   align-items: center;
 
@@ -84,6 +85,7 @@ form {
   box-sizing: border-box;
   display: block;
   border-radius: 4px;
+  margin-top: 3px;
 
   &::placeholder {
     font-size: $font-size-sm;
@@ -121,6 +123,7 @@ form {
 .errormsg {
   color: $error-color;
   font-size: 12px;
+  margin-top: 4px;
 }
 
 /* Checkbox */
@@ -135,6 +138,8 @@ form {
 
   input[type='checkbox'] {
     margin-right: 8px;
+    accent-color: $primary-color;
   }
+  
 }
 

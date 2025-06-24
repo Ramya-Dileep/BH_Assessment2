@@ -33,6 +33,11 @@
   color: grey;
   margin-bottom: 25px;
   font-size: 20px;
+   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
 }
 .material-symbols-outlined {
   transition: none; /* ensure no animation */
@@ -41,8 +46,8 @@
 .material-symbols-outlined:hover
  {
   background-color: #C7F7E1;
-  border-radius: 50%;
-  padding: 6px;
+  border-radius: 100%;
+  // padding: 6px;
 }
 
 // .sidebar-item a.active  {

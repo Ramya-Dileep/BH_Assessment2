@@ -149,14 +149,16 @@ applyTabFilter(): void {
   switch (this.selectedTab) {
     case 'my':
       this.filteredProjects = this.allProjects.filter(
-        (p) => p.isMyContracts === 'True'
+        p => p.isMyContracts === 'True'
       );
       break;
+
     case 'fav':
       this.filteredProjects = this.allProjects.filter(
-        (p) => p.isFavourite === 'True'
+        p => this.favourites.has(p.id)
       );
       break;
+
     default:
       this.filteredProjects = [...this.allProjects];
   }
@@ -164,6 +166,7 @@ applyTabFilter(): void {
   this.originalProjects = [...this.filteredProjects];
   this.applySearch(this.searchControl.value || '');
 }
+
 
 
 
@@ -216,6 +219,24 @@ applyTabFilter(): void {
   this.selectFirstProjectAndJobs();
 }
 
+favourites = new Set<string>(); // Track favourite project IDs
+
+toggleFavourite(project: ProjectTreeNode): void {
+  if (this.favourites.has(project.id)) {
+    this.favourites.delete(project.id);
+  } else {
+    this.favourites.add(project.id);
+  }
+
+  if (this.selectedTab === 'fav') {
+    this.applyTabFilter(); // Re-apply filter if on Favourites tab
+  }
+
+  this.cdr.detectChanges();
+}
+
+
+
 
 // selectFirstProjectAndJobs(): void {
 //   this.selectedJobs.clear();
@@ -248,6 +269,16 @@ applyTabFilter(): void {
   // Kendo TreeView bindings:
 
 selectFirstProjectAndJobs(): void {
+
+   if (this.selectedTab === 'fav' && this.filteredProjects.length == 0) {
+    this.selectedJobs.clear();
+    this.selectedJobIds = [];
+    this.expandedNodes.clear();
+    this.emitSelectedContracts();
+    this.cdr.detectChanges();
+    return;
+  }
+
   this.selectedJobs.clear();
   this.selectedJobIds = [];
   this.expandedNodes.clear();

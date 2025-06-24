@@ -22,12 +22,13 @@
       </div>
 
 
+       <span class="material-symbols-outlined" (click)="toggleFullscreen()">
+        {{ isFullscreen ? 'fullscreen_exit' : 'fullscreen' }}
+      </span>
 
       <span class="material-symbols-outlined">settings</span>
 
-      <span class="material-symbols-outlined" (click)="toggleFullscreen()">
-        {{ isFullscreen ? 'fullscreen_exit' : 'fullscreen' }}
-      </span>
+     
     </div>
   </div>
 
@@ -40,7 +41,7 @@
     </kendo-loader>
   } @else {
 
-  <kendo-grid
+  <!-- <kendo-grid
   [data]="pagedData"
   [height]="isFullscreen ? 900 : 350"
   scrollable="scrollable"
@@ -58,7 +59,31 @@
     <kendo-grid-column field="street" title="Street" [width]="120"></kendo-grid-column>
     <kendo-grid-column field="city" title="City" [width]="120"></kendo-grid-column>
     <kendo-grid-column field="zipcode" title="Zipcode" [width]="120"></kendo-grid-column>
-  </kendo-grid>
+  </kendo-grid> -->
+
+<kendo-grid
+  [data]="pagedData"
+  [height]="isFullscreen? 900 : 350"
+  [sortable]="{ mode: 'multiple' }"
+  [pageable]="true"
+  [skip]="skip"
+  [pageSize]="pageSize"
+  [sort]="sort"
+  [filter]="filter"
+  [sort]="sort"
+  [filter]="filter"
+  (pageChange)="onPageChange($event)"
+  (dataStateChange)="dataStateChange($event)"
+>
+  <kendo-grid-column field="name" title="Name" [width]="150" [filterable]="true"></kendo-grid-column>
+  <kendo-grid-column field="username" title="Username" [width]="100" [filterable]="true"></kendo-grid-column>
+  <kendo-grid-column field="email" title="Email" [width]="200" [filterable]="true"></kendo-grid-column>
+  <kendo-grid-column field="contract" title="Contract" [width]="150" [filterable]="true"></kendo-grid-column>
+  <kendo-grid-column field="street" title="Street" [width]="120" [filterable]="true"></kendo-grid-column>
+  <kendo-grid-column field="city" title="City" [width]="120" [filterable]="true"></kendo-grid-column>
+  <kendo-grid-column field="zipcode" title="Zipcode" [width]="120" [filterable]="true"></kendo-grid-column>
+</kendo-grid>
+
 
 }
 </div>

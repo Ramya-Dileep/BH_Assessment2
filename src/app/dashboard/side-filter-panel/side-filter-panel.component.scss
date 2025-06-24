@@ -114,15 +114,25 @@
 
 .star-icon {
   font-size: 18px;
-  color: #014D40 !important; /* or your desired color */
+  // color: #014D40 !important; /* or your desired color */
   flex-shrink: 0;
   margin-left: 190px !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
   font-family: 'Material Symbols Outlined';
   font-variation-settings:
   'FILL' 1 ,
   'wght' 700,
   'GRAD' 0,
   'opsz' 24 !important;
+
+    &.not-favourite {
+    color: grey !important;
+  }
+
+  &.favourite {
+    color: #014D40 !important;
+  }
 
 }
 

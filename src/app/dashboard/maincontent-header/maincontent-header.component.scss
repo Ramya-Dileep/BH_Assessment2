@@ -137,7 +137,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 1000px;     
+  max-width: 1000px;  
+  padding: 5px;   
   min-width: 0;      
   flex-shrink: 1;
 }
@@ -181,9 +182,9 @@
   align-items: center;
   background-color: #fff3cd;
   border: 1px solid red;
-  border-radius: 0.5rem;
+  border-radius: 4px;
   padding-left: 7px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 
   .alert-text {
     display: flex;
@@ -201,8 +202,11 @@
     }
 
     a {
-      color: #856404;
+      color: red;
+      text-decoration: none;
       margin-left: 0.5rem;
+      font-weight: bold;
+      font-size: 12px;
     }
   }
 
@@ -211,10 +215,12 @@
     border: none;
     cursor: pointer;
     padding: 0.25rem;
+    justify-content: center;
 
     .material-symbols-outlined {
-      font-size: 1.2rem;
-      color: #856404;
+      font-size: 16px;
+      color: black;
+      margin-right: 10px;
     }
   }
 }

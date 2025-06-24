@@ -1,5 +1,5 @@
 .tabulardiv{
-    border-radius: 16px;
+    border-radius: 5px;
     border: 1px solid #ccc;
     margin-bottom: 12px;
     overflow: hidden;
@@ -12,7 +12,7 @@
         font-weight: bold;
         height: 30px;
         flex-shrink: 0;
-        padding: 8px;
+        padding: 8px 16px;
         display: flex;
         align-items: center;
         color: black;
@@ -74,7 +74,8 @@
               border-radius: 16px;
               padding: 0 10px;
               height: 30px;
-              max-width: 300px;
+              margin-right: 5px;
+              max-width: 250px;
               background-color: #fff;
 
               &:focus-within {
@@ -130,7 +131,9 @@
         font-size: 18px;
         color: #212121;
         cursor: pointer;
+        margin-right: 10px;
     }
+
 
     .tabulardiv:-webkit-full-screen {
         width: 100vw;
@@ -143,6 +146,47 @@
       }
 
 
+.custom-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  .filter-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+.filter-box {
+  position: absolute;
+  top: 100%;               /* Immediately below header */
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 6px;
+  z-index: 10;            /* Ensure it appears above other elements */
+  display: block;
+}
+
+
+.k-grid-header {
+  overflow: visible !important; // Allow overflow inside the header
+}
+
+}
+
+
+
+
+}
+
+::ng-deep.k-pager-info {
+    text-align: end;
+    margin-right: 10px !important;
+    justify-content: flex-end;
+    flex: 1 1 0%;
+    order: 9;
 }
 
   

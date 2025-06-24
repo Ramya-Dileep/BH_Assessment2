@@ -49,9 +49,9 @@
 
 
           <div class="fwbtn">
-            <button 
-                kendoButton 
-                class="fwbtndisplay">  < </button>
+            <button kendoButton class="fwbtndisplay">
+              <span class="material-symbols-outlined">chevron_left</span>
+            </button>
             @for (fwbtn of fwbuttons; track $index){
                 <button 
                 kendoButton 
@@ -61,9 +61,9 @@
                 <div class="line2">{{ fwbtn.subtext }}</div>
               </button>           
             }
-            <button 
-            kendoButton 
-            class="fwbtndisplay">  > </button>
+            <button kendoButton class="fwbtndisplay">
+              <span class="material-symbols-outlined">chevron_right</span>
+            </button>
           </div>
 
           

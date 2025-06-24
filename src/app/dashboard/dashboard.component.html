@@ -4,9 +4,9 @@
 
   <div class="main-content">
 
-      <div class="left-sidebars" [hidden]="isFullscreen">
+      <div class="left-sidebars" >
         <app-side-icon-panel class="iconsidebar"></app-side-icon-panel>
-        <app-side-filter-panel
+        <app-side-filter-panel [hidden]="isFullscreen"
           class="filtersidebar"
           (selectedContractsChange)="onContractsChanged($event)"
           [class.collapsed]="isSidebarCollapsed"

@@ -199,5 +199,14 @@
   box-shadow: none !important;
 }
 
+.k-panel-content {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
 
- 
+.k-panel-content.collapsed {
+  max-height: 0;
+  opacity: 0;
+  padding: 0;
+  pointer-events: none;
+}

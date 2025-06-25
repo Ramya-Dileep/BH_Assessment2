@@ -57,10 +57,10 @@
         <span class="material-symbols-outlined">close</span>
       </button>
     </div>
+  }
 
-    <app-filter-activities title="Filter Activities"></app-filter-activities>
+    <app-filter-activities title="Filter Activities"  [collapsed]="fullscreenMode"></app-filter-activities>
 
-    }
 
     <div class="scrollable-content">
       <app-activities-tabulardata

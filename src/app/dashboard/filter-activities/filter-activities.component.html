@@ -13,12 +13,12 @@
         </span>
 
       <span class="material-symbols-outlined"  (click)="togglePanel()">
-        {{ isExpanded() ?  'keyboard_arrow_down' : 'keyboard_arrow_up' }}
+        {{ userExpanded() ?  'keyboard_arrow_down' : 'keyboard_arrow_up' }}
       </span>
     </div>
     </div>
   
-    @if (isExpanded()) {
+    @if (userExpanded()) {
       <div class="k-panel-content">
 
         <div class="dropdown-wrapper">

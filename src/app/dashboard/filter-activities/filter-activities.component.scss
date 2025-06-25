@@ -84,7 +84,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
-      padding: 10px;
+      padding: 10px 5px;
 
       .btndisplay {
         background-color: #CED7D4;
@@ -109,7 +109,7 @@
     .fwbtn {
       display: flex;
       flex-wrap: wrap;
-      padding: 10px 0 10px 10px;
+      padding: 10px 5px;
       justify-content: space-between;
 
       .fwbtndisplay{

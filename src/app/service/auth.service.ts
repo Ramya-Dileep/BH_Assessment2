@@ -33,6 +33,15 @@ export class AuthService {
     }
   }
 
+  isAdmin(): boolean {
+  return this.getCurrentUser()?.userName === 'admin' ? true : false;
+}
+
+isUser(): boolean {
+  return this.getCurrentUser()?.userName !== 'admin' ? true : false;
+}
+
+
   clearUser(): void {
     this.currentUserSubject.next(null);
     localStorage.removeItem('LoggedUser');

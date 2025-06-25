@@ -6,6 +6,7 @@ import { KENDO_DATEINPUTS } from '@progress/kendo-angular-dateinputs';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { AuthService } from '../../service/auth.service';
 
 import { FilterActivitiesComponent } from '../filter-activities/filter-activities.component';
 import { ActivitiesTabulardataComponent } from '../activities-tabulardata/activities-tabulardata.component';
@@ -50,7 +51,7 @@ export class MaincontentHeaderComponent implements OnInit {
     { label: 'Technical Alignment', value: 'Technical Alignment' }
   ];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, public authService : AuthService) {}
 
   ngOnInit(): void {
     const group: any = {};

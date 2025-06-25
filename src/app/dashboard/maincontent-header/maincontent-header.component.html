@@ -59,7 +59,7 @@
     </div>
   }
 
-    <app-filter-activities title="Filter Activities"  [collapsed]="fullscreenMode"></app-filter-activities>
+    <app-filter-activities title="Filter Activities"  *ngIf="authService.isAdmin()" [collapsed]="fullscreenMode"></app-filter-activities>
 
 
     <div class="scrollable-content">

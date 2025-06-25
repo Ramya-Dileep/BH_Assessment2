@@ -298,22 +298,6 @@
     opacity: 0;
   }
 
-  // .search-input {
-  //   width: 90%;
-  //   padding: 6px 10px;
-  //   align-items: center;
-  //   margin-bottom: 10px;
-  //   margin-left: 10px;
-  //   font-size: 14px;
-  //   margin-top: 10px;
-  //   border-radius: 16px;
-  //   border: 1px solid #ccc;
-  //   transition: border-color 0.2s ease;
-  //   &:focus {
-  //     border-color: #999; 
-  //     box-shadow: 0 0 0 1px #ccc;
-  //   }
-  // }
 
          .search-box {
               display: flex;
@@ -415,9 +399,9 @@
 
 
   .results-summary {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
-    color: #05322b;
+    color: #333;
     margin-bottom: 10px;
     margin-top: 10px;
   }

@@ -56,7 +56,7 @@
         <span class="material-symbols-outlined search-icon">search</span>
       </div>
 
-    <div class="advsearchdiv">
+    <div class="advsearchdiv"  *ngIf="authService.isAdmin()">
       <button class="advanceSearch">
         <span class="material-symbols-outlined">chevron_right</span>
        Advanced Search</button>

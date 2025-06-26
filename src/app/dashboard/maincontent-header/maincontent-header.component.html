@@ -18,7 +18,7 @@
             <span class="value">{{ percentage }}%</span>
           </div>
         </div>
-        <button kendoButton class="nav-btn">Do vs Buy</button>
+        <button kendoButton class="nav-btn" *ngIf="authService.isAdmin()">Do vs Buy</button>
       </div>
     </div>
 
@@ -46,8 +46,7 @@
       <span class="projectText">{{ ProjectName }}</span>
     </div>
 
-
-    <div class="reassign-alert" *ngIf="hasReassignRequests">
+    <div class="reassign-alert" *ngIf="hasReassignRequests  && authService.isAdmin()">
       <div class="alert-text">
         <span class="material-symbols-outlined">notification_important</span>
         You have received <strong>3 primary resource re-assignment requests</strong>
@@ -59,7 +58,7 @@
     </div>
   }
 
-    <app-filter-activities title="Filter Activities"  *ngIf="authService.isAdmin()" [collapsed]="fullscreenMode"></app-filter-activities>
+    <app-filter-activities title="Filter Activities"  [collapsed]="fullscreenMode"></app-filter-activities>
 
 
     <div class="scrollable-content">

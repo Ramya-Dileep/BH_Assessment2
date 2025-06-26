@@ -1,13 +1,25 @@
 <div class="sidebar">
-  
   <div class="sidebar-item">
-      @for (item of navItems; track item.id; let i = $index) {
-    <a [routerLink]="item.routerLink" [ngClass]="{ 'active': i === selectedId }"
-      (click)="expandSidebar(i)">
-      <span class="material-symbols-outlined">
-        {{ item.icon }}
-        </span>
+
+    <!-- Manually rendered first icon (e.g. dashboard or toggle) -->
+    <a (click)="expandSidebar(0)" class="sidebar-link first-icon">
+      <span class="material-symbols-outlined with-border">
+        device_hub
+      </span>
     </a>
-  }
+
+    <!-- Other nav items from loop -->
+    @for (item of navItems.slice(1); track item.id; let i = $index) {
+      <a
+        [routerLink]="item.routerLink"
+        [ngClass]="{ 'active': item.id === selectedId }"
+        (click)="expandSidebar(item.id)"
+        class="sidebar-link"
+      >
+        <span class="material-symbols-outlined">
+          {{ item.icon }}
+        </span>
+      </a>
+    }
   </div>
 </div>

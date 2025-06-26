@@ -10,6 +10,7 @@ import { ProjectTreeService, Project } from '../../service/project-tree.service'
 import { ProjectTreeNode } from '../../models/projectTree.model';
 import { TreeViewModule } from '@progress/kendo-angular-treeview';
 import { ChangeDetectorRef } from '@angular/core';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-side-filter-panel',
@@ -49,7 +50,8 @@ export class SideFilterPanelComponent implements OnInit, OnDestroy {
   constructor(
     private sidebarService: SidebarService,
     private projectService: ProjectTreeService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public authService: AuthService
   ) {}
 
   ngOnInit(): void {

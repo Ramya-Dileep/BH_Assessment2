@@ -219,6 +219,11 @@ applyTabFilter(): void {
   this.selectFirstProjectAndJobs();
 }
 
+isFavourited(dataItem: any): boolean {
+  return this.favourites.has(dataItem.id);
+}
+
+
 favourites = new Set<string>(); // Track favourite project IDs
 
 toggleFavourite(project: ProjectTreeNode): void {

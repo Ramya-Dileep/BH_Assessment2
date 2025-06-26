@@ -117,7 +117,7 @@
     <span class="node-text">{{ dataItem.text }}</span>
     <span
       *ngIf="dataItem.children?.[0]?.children"
-      class="material-symbols-outlined star-icon"
+      class="material-icons star-icon"
       [ngClass]="{
         'favourite': favourites.has(dataItem.id),
         'not-favourite': !favourites.has(dataItem.id)

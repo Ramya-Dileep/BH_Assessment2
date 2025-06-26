@@ -112,6 +112,7 @@
   text-overflow: ellipsis;
 }
 
+
 .star-icon {
   font-size: 18px;
   // color: #014D40 !important; /* or your desired color */
@@ -119,7 +120,7 @@
   margin-left: 190px !important;
   pointer-events: auto !important;
   cursor: pointer !important;
-  font-family: 'Material Symbols Outlined';
+  font-family: 'Material Icons';
   font-variation-settings:
   'FILL' 1 ,
   'wght' 700,
@@ -127,7 +128,7 @@
   'opsz' 24 !important;
 
     &.not-favourite {
-    color: grey !important;
+    color: #CED7D4 !important;
   }
 
   &.favourite {
@@ -417,7 +418,7 @@
 .star-icon {
   position: absolute;
   font-size: 18px;
-  width:100%;
+  // width:100%;
   margin-left: 10px ;
   pointer-events: none; /* ensures checkbox clicks still work */
 }
